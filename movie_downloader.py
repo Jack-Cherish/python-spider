@@ -52,7 +52,7 @@ class APP:
 		entry = tk.Entry(frame_1, textvariable = self.url, highlightcolor = 'blue', highlightthickness = 2)
 		label2 = tk.Label(frame_1, text = "\n")
 		play = tk.Button(frame_1, text = "播放", fg = 'red', width = 2, height = 1, command = self.confirm)
-		label_explain = tk.Label(frame_2, fg = 'red', font = ('楷体',12), text = '\n注意：支持大部分主流视频网站的视频播放和下载。\n若播放失败请刷新浏览器或选择其他通道进行观看！')
+		label_explain = tk.Label(frame_2, fg = 'red', font = ('楷体',10), text = '\n注意：支持大部分主流视频网站的视频播放,\n暂只支持爱奇艺和优酷的视频下载。\n若播放失败请刷新浏览器或选择其他通道进行观看！')
 		label_warning = tk.Label(frame_2, fg = 'blue', font = ('楷体',12),text = '\n建议：将Chrome内核浏览器设置为默认浏览器\n作者:Jack_Cui')
 
 		frame_1.pack()
@@ -70,7 +70,7 @@ class APP:
 
 	def confirm(self):
 		port_1 = 'http://www.wmxz.wang/video.php?url='
-		port_2 = 'http://www.vipjiexi.com/yun.php?url='
+		port_2 = 'http://www.vipjiexi.com/tong.php?url='
 		#正则表达是判定是否为合法链接
 		if re.match(r'^https?:/{2}\w.+$', self.url.get()):
 			if self.v.get() == 1:
@@ -89,7 +89,7 @@ class APP:
 			
 			head = {
 				'User-Agent':'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19',
-				'Referer':'http://www.sfsft.com/index/iqiyi.php?url=%s' % ip
+				'Referer':'http://www.sfsft.com/index.php?url=%s' % ip
 			}
 
 			get_url_req = request.Request(url = get_url, headers = head)
@@ -157,12 +157,6 @@ class APP:
 		self.root.resizable(False, False)	#禁止修改窗口大小
 		self.center()						#窗口居中
 		self.root.mainloop()
-
-def Schedule(a, b, c):
-	per = 100.0*a*b/c
-	if per > 100 :
-		per = 1
-		print("%.2f%% 已经下载的大小:%ld 文件大小:%ld" % (per,a*b,c))
 
 if __name__ == '__main__':
 	app = APP()
