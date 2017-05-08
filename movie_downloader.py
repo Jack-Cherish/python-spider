@@ -52,7 +52,7 @@ class APP:
 		entry = tk.Entry(frame_1, textvariable = self.url, highlightcolor = 'blue', highlightthickness = 2)
 		label2 = tk.Label(frame_1, text = "\n")
 		play = tk.Button(frame_1, text = "播放", fg = 'red', width = 2, height = 1, command = self.confirm)
-		label_explain = tk.Label(frame_2, fg = 'red', font = ('楷体',10), text = '\n注意：支持大部分主流视频网站的视频播放,\n暂只支持爱奇艺和优酷的视频下载。\n若播放失败请刷新浏览器或选择其他通道进行观看！')
+		label_explain = tk.Label(frame_2, fg = 'red', font = ('楷体',10), text = '\n注意：支持大部分主流视频网站的视频播放和视频下载\n若播放失败请刷新浏览器或选择其他通道进行观看！')
 		label_warning = tk.Label(frame_2, fg = 'blue', font = ('楷体',12),text = '\n建议：将Chrome内核浏览器设置为默认浏览器\n作者:Jack_Cui')
 
 		frame_1.pack()
@@ -74,15 +74,62 @@ class APP:
 		#正则表达是判定是否为合法链接
 		if re.match(r'^https?:/{2}\w.+$', self.url.get()):
 			if self.v.get() == 1:
+				ip = self.url.get()
+				ip = ip.replace('://','%3A%2F%2F').replace('/', '%2F').replace('?fc=', '%3D').replace('=', '%3D').replace('#', '%23')
 				webbrowser.open(port_1 + self.url.get())
 			elif self.v.get() == 2:
-				webbrowser.open(port_2 + self.url.get())
+				ip = self.url.get()
+				ip = ip.replace('://','%3A%2F%2F').replace('/', '%2F').replace('?fc=', '%3D').replace('=', '%3D').replace('#', '%23')
+
+				ip = 'http%3A%2F%2Fwww.iqiyi.com%2Fv_19rrb2yq04.html%3Ffc%3D8b62d5327a54411b%23vfrm%3D19-9-0-1'
+
+				get_url = 'http://www.vipjiexi.com/x2/tong.php?url=%s' % ip 
+
+				get_url_head = {
+					'User-Agent':'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19',
+					'Referer':'http://www.vipjiexi.com/',
+				}
+
+				get_url_req = request.Request(url = get_url, headers = get_url_head)
+				get_url_response = request.urlopen(get_url_req)
+				get_url_html = get_url_response.read().decode('utf-8')
+				bf = BeautifulSoup(get_url_html, 'lxml')
+
+				a = str(bf.find_all('script'))
+
+				pattern = re.compile('"api.php", {"time":"(\d+)", "key": "(.+)", "url": "(.+)","type"', re.IGNORECASE)
+
+				now_time = pattern.findall(a)[0][0]
+				now_key = pattern.findall(a)[0][1]
+				now_url = pattern.findall(a)[0][2]
+
+				get_movie_url = 'http://www.vipjiexi.com/x2/api.php'
+				get_movie_data = {
+					'key':'%s' % now_key,
+					'time':'%s' % now_time,
+					'type':'',
+					'url':'%s' % now_url
+				}
+
+				get_movie_head = {
+					'User-Agent':'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166  Safari/535.19',
+					'Referer':'http://www.vipjiexi.com/x2/tong.php?',
+					'url':'%s' % ip,
+				}
+
+				get_movie_req = request.Request(url = get_movie_url, headers = get_movie_head)
+				get_movie_data = parse.urlencode(get_movie_data).encode('utf-8')
+				get_movie_response = request.urlopen(get_movie_req, get_movie_data)
+				get_movie_html = get_movie_response.read().decode('utf-8')
+				get_movie_data = json.loads(get_movie_html)
+				webbrowser.open(get_url)
 		else:
 			msgbox.showerror(title='错误',message='视频链接地址无效，请重新输入！')
 
 	def download_wmxz(self):	
 		if re.match(r'^https?:/{2}\w.+$', self.url.get()):
 			ip = self.url.get()
+			ip = ip.replace('://','%3A%2F%2F').replace('/', '%2F').replace('?fc=', '%3D').replace('=', '%3D').replace('#', '%23')
 			get_url = 'http://www.sfsft.com/index.php?url=%s' % ip 
 			
 			get_movie_url = 'http://www.sfsft.com/api.php'
@@ -161,7 +208,3 @@ class APP:
 if __name__ == '__main__':
 	app = APP()
 	app.loop()
-
-
-
-
