@@ -1,4 +1,4 @@
-?# Python Spider
+# Python Spider
 
 * 贵有恒，何必三更起五更睡；最无益，只怕一日暴十寒。
 
