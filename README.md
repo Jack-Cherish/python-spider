@@ -32,7 +32,7 @@
 	
 	源码可查看`video_downloader`，运行源码需要搭建Python3环境，并安装相应第三方依赖库：
 	
-	在`video_downloader`文件下，安装第三方依赖库：
+	在`video_downloader`文件夹下，安装第三方依赖库：
 
 		pip3 install -r requirements.txt
 
