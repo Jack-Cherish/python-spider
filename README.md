@@ -28,7 +28,7 @@
 	
 	编译好的软件下载连接：https://pan.baidu.com/s/1c1MBMUG  解压密码：`c406495762`
 	
-	无需Python3环境，解压即用！[软件使用方法](http://blog.csdn.net/c406495762/article/details/71334633 "悬停显示")
+	无需Python3环境，在Windows下，解压即用！[软件使用方法](http://blog.csdn.net/c406495762/article/details/71334633 "悬停显示")
 	
 	源码可查看`video_downloader`，运行源码需要搭建Python3环境，并安装相应第三方依赖库：
 	
