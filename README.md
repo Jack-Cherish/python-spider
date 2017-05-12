@@ -30,7 +30,7 @@
 	
 	无需Python3环境，解压即用！[软件使用方法](http://blog.csdn.net/c406495762/article/details/71334633 "悬停显示")
 	
-	源码可查看`video_downloader`,运行源码需要搭建Python3环境，并安装相应第三方依赖库：
+	源码可查看`video_downloader`，运行源码需要搭建Python3环境，并安装相应第三方依赖库：
 	
 	在`video_downloader`文件下，安装第三方依赖库：
 
