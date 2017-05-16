@@ -48,5 +48,12 @@
 		
 		Mac, Python3
 
+* baiduwenku.py: 百度文库word文章下载
+	
+	原理说明：http://blog.csdn.net/c406495762/article/details/72331737
+	
+	代码不完善，没有进行打包，不具通用性，纯属娱乐，以后有时间会完善。
+	
+	
 
 
