@@ -23,6 +23,7 @@ if __name__ == '__main__':
 	print('文章标题：%s' % title)
 	print('文章页数：%d' % num)
 
+
 	while True:
 		num = num / 5.0
 		html = driver.page_source
