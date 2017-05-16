@@ -48,7 +48,7 @@
 		
 		Mac, Python3
 
-* baiduwenku.py: 百度文库word文章下载
+* baiduwenku.py: 百度文库word文章爬取
 	
 	原理说明：http://blog.csdn.net/c406495762/article/details/72331737
 	
