@@ -26,7 +26,7 @@
 
 	感谢Python3二维码生成器作者：https://github.com/sylnsfar/qrcode
 	
-	编译好的软件下载连接：http://pan.baidu.com/s/1gfl8nyb  解压密码：`c406495762`
+	编译好的软件下载连接：http://pan.baidu.com/s/1i584VC5  解压密码：`c406495762`
 	
 	无需Python3环境，在Windows下，解压即用！[软件使用方法](http://blog.csdn.net/c406495762/article/details/71334633 "悬停显示")
 	
