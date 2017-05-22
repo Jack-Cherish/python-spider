@@ -56,6 +56,8 @@
 	
 * baiduwenku.py: 爬取《帅啊》网，帅哥图片
 
+	《帅啊》网URL：http://www.shuaia.net/index.html
+
 	原理说明：http://blog.csdn.net/c406495762/article/details/72597755
 	
 	第三方依赖库安装：
