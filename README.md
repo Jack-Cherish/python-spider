@@ -54,6 +54,14 @@
 	
 	代码不完善，没有进行打包，不具通用性，纯属娱乐，以后有时间会完善。
 	
+* baiduwenku.py: 爬取《帅啊》网，帅哥图片
+
+	原理说明：http://blog.csdn.net/c406495762/article/details/72597755
+	
+	第三方依赖库安装：
+	
+		pip3 install requests beautifulsoup4
+	
 	
 
 
