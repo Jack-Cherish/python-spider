@@ -69,7 +69,18 @@
 	原理说明：http://blog.csdn.net/c406495762/article/details/72793480
 	
 	
+* carton: 使用Scrapy爬取《火影忍者》漫画
+
+	代码可以爬取整个《火影忍者》漫画所有章节的内容，保存到本地。保存地址可以在settings.py中修改。
 	
+	动漫网站：http://comic.kukudm.com/
+	
+	原理说明：http://blog.csdn.net/c406495762/article/details/72858983
+	
+	
+	
+	
+
 	
 
 
