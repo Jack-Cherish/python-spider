@@ -38,7 +38,7 @@ class ComicSpider(scrapy.Spider):
 			items.append(item)
 
 		#根据每个章节的链接，发送Request请求，并传递item参数
-		for item in items:
+		for item in items[-13:-1]:
 			yield scrapy.Request(url = item['link_url'], meta = {'item':item}, callback = self.parse2)
 		
 	#解析获得章节第一页的页码数和图片链接	
@@ -57,7 +57,7 @@ class ComicSpider(scrapy.Spider):
 		#返回item，交给item pipeline下载图片
 		yield item
 		#获取章节的页数
-		page_num = hxs.xpath('//td[@valign="top"]/text()').re(u'共(\d+)页')[0]、
+		page_num = hxs.xpath('//td[@valign="top"]/text()').re(u'共(\d+)页')[0]
 		#根据页数，整理出本章节其他页码的链接
 		pre_link = item['link_url'][:-5]
 		for each_link in range(2, int(page_num) + 1):
@@ -69,6 +69,8 @@ class ComicSpider(scrapy.Spider):
 	def parse3(self, response):
 		#接收传递的item
 		item = response.meta['item']
+		#获取该页面的链接
+		item['link_url'] = response.url
 		hxs = Selector(response)
 		pre_img_url = hxs.xpath('//script/text()').extract()
 		#注意这里返回的图片地址,应该为列表,否则会报错
