@@ -25,7 +25,7 @@ ITEM_PIPELINES = {
 	'cartoon.pipelines.ComicImgDownloadPipeline': 1,
 }
 
-IMAGES_STORE = 'J:/火影忍者'
+IMAGES_STORE = 'H:/火影忍者'
 
 COOKIES_ENABLED = False
 
