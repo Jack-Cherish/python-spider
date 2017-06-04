@@ -38,7 +38,7 @@ class ComicSpider(scrapy.Spider):
 			items.append(item)
 
 		#根据每个章节的链接，发送Request请求，并传递item参数
-		for item in items[-13:-1]:
+		for item in items:
 			yield scrapy.Request(url = item['link_url'], meta = {'item':item}, callback = self.parse2)
 		
 	#解析获得章节第一页的页码数和图片链接	

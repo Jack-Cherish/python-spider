@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'cartoon.spiders'
 #USER_AGENT = 'cartoon (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 ITEM_PIPELINES = {
 	'cartoon.pipelines.ComicImgDownloadPipeline': 1,
