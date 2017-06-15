@@ -22,11 +22,11 @@
 
 		python biqukan.py
 
-* video_downloader: 爱奇艺等主流视频网站的VIP视频破解助手(软件下载功能和手机观看功能已跪，不能用了，不再更新，抱歉！)
+* video_downloader: 爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
 
 	感谢Python3二维码生成器作者：https://github.com/sylnsfar/qrcode
 	
-	编译好的软件下载连接：http://pan.baidu.com/s/1i584VC5  解压密码：`c406495762`
+	编译好的软件下载连接：http://pan.baidu.com/s/1eR4Y7aM  解压密码：`c406495762`
 	
 	无需Python3环境，在Windows下，解压即用！[软件使用方法](http://blog.csdn.net/c406495762/article/details/71334633 "悬停显示")
 	
