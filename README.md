@@ -12,7 +12,7 @@
 
 ## 介绍
  
-### biqukan.py:《笔趣看》盗版小说网站，爬取小说工具
+### 1.biqukan.py:《笔趣看》盗版小说网站，爬取小说工具
 
 * 第三方依赖库安装：
 
@@ -22,7 +22,7 @@
 
 	python biqukan.py
 
-### video_downloader: 爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
+### 2.video_downloader: 爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
 
 感谢Python3二维码生成器作者：https://github.com/sylnsfar/qrcode
 	
@@ -48,13 +48,13 @@
 	
 	Mac, Python3
 
-### baiduwenku.py: 百度文库word文章爬取
+### 3.baiduwenku.py: 百度文库word文章爬取
 	
 原理说明：http://blog.csdn.net/c406495762/article/details/72331737
 
 代码不完善，没有进行打包，不具通用性，纯属娱乐，以后有时间会完善。
 	
-### shuaia.py: 爬取《帅啊》网，帅哥图片
+### 4.shuaia.py: 爬取《帅啊》网，帅哥图片
 
 《帅啊》网URL：http://www.shuaia.net/index.html
 
@@ -64,11 +64,11 @@
 	
 	pip3 install requests beautifulsoup4
 		
-### daili.py: 构建代理IP池
+### 5.daili.py: 构建代理IP池
 
 原理说明：http://blog.csdn.net/c406495762/article/details/72793480
 		
-### carton: 使用Scrapy爬取《火影忍者》漫画
+### 6.carton: 使用Scrapy爬取《火影忍者》漫画
 
 代码可以爬取整个《火影忍者》漫画所有章节的内容，保存到本地。更改地址，可以爬取其他漫画。保存地址可以在settings.py中修改。
 
