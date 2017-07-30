@@ -22,7 +22,7 @@
 
 		python biqukan.py
 
-* video_downloader: 爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
+* video_downloader: (注意：已经无法使用！)爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
 
 	感谢Python3二维码生成器作者：https://github.com/sylnsfar/qrcode
 	
