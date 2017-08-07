@@ -77,6 +77,12 @@
 	
 	原理说明：http://blog.csdn.net/c406495762/article/details/72858983
 	
+* hero: 《王者荣耀》推荐出装查询小助手
+
+	网页爬取已经会了，想过爬取手机APP里的内容吗？
+	
+	原理说明：http://blog.csdn.net/c406495762/article/details/76850843
+	
 	
 	
 	
