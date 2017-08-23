@@ -6,16 +6,16 @@
 
 * Python3爬虫实战：实战源码+博客讲解
 
-## 声明
+## 一 声明
 
 * 软件均仅用于学习交流，请勿用于任何商业用途！
 
 
-## 福利篇
+## 二 福利篇
 
 * 私密小福利：star数超过100(不要fork，不要fork，不要fork，只要star，来个follow就更完美了)！push一个硬盘女神视频下载器，也是用python3爬虫写的。视频下载支持91PRON和废柴网，老司机应该都懂吧？只放半小时，然后会remove，欢迎关注！
 
-## 爬虫小工具
+## 三 爬虫小工具
 
 * downloader.py:文件下载小助手
 
@@ -25,7 +25,7 @@
 	
 	![image](https://github.com/Jack-Cherish/Pictures/blob/master/9.gif)
 
-## 爬虫实战
+## 四 爬虫实战
  
 * biqukan.py:《笔趣看》盗版小说网站，爬取小说工具
 
