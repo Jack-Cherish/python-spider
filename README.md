@@ -1,15 +1,13 @@
 # Python Spider
 
 * 贵有恒，何必三更起五更睡；最无益，只怕一日暴十寒。
-
 * [我的博客](http://blog.csdn.net/c406495762 "悬停显示")
-
 * Python3爬虫实战：实战源码+博客讲解
+* 欢迎关注我的[[CSDN博客专栏](http://blog.csdn.net/column/details/15321.html "悬停显示")]<br>
 
 ## 声明
 
 * 软件均仅用于学习交流，请勿用于任何商业用途！
-
 
 ## 福利篇
 
