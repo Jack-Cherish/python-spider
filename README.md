@@ -4,7 +4,7 @@
 
 * [我的博客](http://blog.csdn.net/c406495762 "悬停显示")
 
-* Python3爬虫
+* Python3爬虫实战：实战源码+博客讲解
 
 ## 声明
 
@@ -81,7 +81,7 @@
 	
 	原理说明：http://blog.csdn.net/c406495762/article/details/72858983
 	
-* hero: 《王者荣耀》推荐出装查询小助手
+* hero.py: 《王者荣耀》推荐出装查询小助手
 
 	网页爬取已经会了，想过爬取手机APP里的内容吗？
 	
@@ -89,7 +89,13 @@
 	
 ## 小工具
 
-![image](https://github.com/Jack-Cherish/Pictures/blob/master/9.gif)
+* downloader.py:文件下载小助手
+
+	一个可以用于下载东西用的小工具，有下载进度显示功能。稍加修改即可添加到自己的爬虫中下载图片、视频、文件。
+	
+	动态示意图：
+	
+	![image](https://github.com/Jack-Cherish/Pictures/blob/master/9.gif)
 
 
 	
