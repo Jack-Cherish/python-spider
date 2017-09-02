@@ -56,7 +56,25 @@ class FinancialData():
 			'Accept-Language': 'zh-CN,zh;q=0.8',
 			'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.109 Safari/537.36'}
 	
+	"""
+	函数说明:获取股票页面信息
 
+	Author:
+		Jack Cui
+	Parameters:
+	    url - 股票财务数据界面地址
+	Returns:
+	    name - 股票名
+	    table_name_list - 财务报表名称
+	    table_date_list - 财务报表年限
+	    url_list - 财务报表查询连接
+	Blog:
+		http://blog.csdn.net/c406495762
+	Zhihu:
+		https://www.zhihu.com/people/Jack--Cui/
+	Modify:
+		2017-08-31
+	"""
 	def get_informations(self, url):
 		req = requests.get(url = url, headers = self.headers)
 		req.encoding = 'utf-8'
@@ -86,6 +104,25 @@ class FinancialData():
 				each_date_list = []
 		return name,table_name_list,table_date_list,url_list
 
+	"""
+	函数说明:财务报表入库
+
+	Author:
+		Jack Cui
+	Parameters:
+	    name - 股票名
+	    table_name_list - 财务报表名称
+	    table_date_list - 财务报表年限
+	    url_list - 财务报表查询连接
+	Returns:
+		无
+	Blog:
+		http://blog.csdn.net/c406495762
+	Zhihu:
+		https://www.zhihu.com/people/Jack--Cui/
+	Modify:
+		2017-08-31
+	"""
 	def insert_tables(self, name, table_name_list,table_date_list, url_list):
 		#打开数据库连接:host-连接主机地址,port-端口号,user-用户名,passwd-用户密码,db-数据库名,charset-编码
 		conn = pymysql.connect(host='127.0.0.1', port=3306, user='root', passwd='yourpasswd',db='financialdata',charset='utf8')
