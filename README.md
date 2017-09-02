@@ -21,7 +21,7 @@
 	
 	动态示意图：
 	
-	![image](https://github.com/Jack-Cherish/Pictures/blob/master/9.gif)
+	![image](https://raw.githubusercontent.com/Jack-Cherish/Pictures/master/9.gif)
 
 ## 爬虫实战
  
@@ -95,6 +95,16 @@
 	网页爬取已经会了，想过爬取手机APP里的内容吗？
 	
 	原理说明：http://blog.csdn.net/c406495762/article/details/76850843
+	
+* financical.py: 财务报表下载小助手
+
+	爬取的数据存入数据库会吗？《跟股神巴菲特学习炒股之财务报表入库(MySQL)》也许能给你一些思路。
+	
+	原理说明：http://blog.csdn.net/c406495762/article/details/77801899
+	
+	动态示意图：
+	
+	![image](https://raw.githubusercontent.com/Jack-Cherish/Pictures/master/10.gif)
 	
 
 
