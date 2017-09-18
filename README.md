@@ -21,7 +21,7 @@
 
 ## 爬虫实战
  
-* biqukan.py:《笔趣看》盗版小说网站，爬取小说工具
+ * biqukan.py:《笔趣看》盗版小说网站，爬取小说工具
 
 	第三方依赖库安装：
 
@@ -31,7 +31,7 @@
 
 		python biqukan.py
 
-* video_downloader：爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
+ * video_downloader：爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
 
 	感谢Python3二维码生成器作者：https://github.com/sylnsfar/qrcode
 	
@@ -57,13 +57,13 @@
 		
 		Mac, Python3
 
-* baiduwenku.py: 百度文库word文章爬取
+ * baiduwenku.py: 百度文库word文章爬取
 	
 	原理说明：http://blog.csdn.net/c406495762/article/details/72331737
 	
 	代码不完善，没有进行打包，不具通用性，纯属娱乐，以后有时间会完善。
 	
-* shuaia.py: 爬取《帅啊》网，帅哥图片
+ * shuaia.py: 爬取《帅啊》网，帅哥图片
 
 	《帅啊》网URL：http://www.shuaia.net/index.html
 
@@ -73,12 +73,12 @@
 	
 		pip3 install requests beautifulsoup4
 		
-* daili.py: 构建代理IP池
+ * daili.py: 构建代理IP池
 
 	原理说明：http://blog.csdn.net/c406495762/article/details/72793480
 	
 	
-* carton: 使用Scrapy爬取《火影忍者》漫画
+ * carton: 使用Scrapy爬取《火影忍者》漫画
 
 	代码可以爬取整个《火影忍者》漫画所有章节的内容，保存到本地。更改地址，可以爬取其他漫画。保存地址可以在settings.py中修改。
 	
@@ -86,13 +86,13 @@
 	
 	原理说明：http://blog.csdn.net/c406495762/article/details/72858983
 	
-* hero.py: 《王者荣耀》推荐出装查询小助手
+ * hero.py: 《王者荣耀》推荐出装查询小助手
 
 	网页爬取已经会了，想过爬取手机APP里的内容吗？
 	
 	原理说明：http://blog.csdn.net/c406495762/article/details/76850843
 	
-* financical.py: 财务报表下载小助手
+ * financical.py: 财务报表下载小助手
 
 	爬取的数据存入数据库会吗？《跟股神巴菲特学习炒股之财务报表入库(MySQL)》也许能给你一些思路。
 	
@@ -102,7 +102,17 @@
 	
 	![image](https://raw.githubusercontent.com/Jack-Cherish/Pictures/master/10.gif)
 	
+ * one_hour_spider:一小时入门Python3网络爬虫。
 
+	讲解文章会在gitchat分享结束后免费放出，当然也可以购买抢先观看：http://gitbook.cn/gitchat/activity/59b09bbf015c905277c2cc09
+	
+	本次实战内容有：
+	
+	 * 网络小说下载(静态网站)-biqukan
+	 * 优美壁纸下载(动态网站)-unsplash
+	 * 爱奇艺VIP视频下载
+
+   
 
 	
 	
