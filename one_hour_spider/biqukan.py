@@ -77,15 +77,11 @@ class downloader(object):
 			f.write('\n\n')
 
 if __name__ == "__main__":
-	# dl = downloader()
-	# dl.get_download_url()
-	# print('《一年永恒》开始下载：')
-	# for i in range(dl.nums):
-	# 	dl.writer(dl.names[i], '一念永恒.txt', dl.get_contents(dl.urls[i]))
-	# 	sys.stdout.write("  已下载:%.3f%%" %  float(i/dl.nums) + '\r')
-	# 	sys.stdout.flush()
-	# print('《一年永恒》下载完成')
-	url = 'https://unsplash.com/'
-	headers = {'User-Agent':'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36'}
-	req = requests.get(url = url, headers = headers)
-	print(req.text)
+	dl = downloader()
+	dl.get_download_url()
+	print('《一年永恒》开始下载：')
+	for i in range(dl.nums):
+		dl.writer(dl.names[i], '一念永恒.txt', dl.get_contents(dl.urls[i]))
+		sys.stdout.write("  已下载:%.3f%%" %  float(i/dl.nums) + '\r')
+		sys.stdout.flush()
+	print('《一年永恒》下载完成')
