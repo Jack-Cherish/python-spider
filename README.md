@@ -4,7 +4,7 @@
 * [我的博客](http://blog.csdn.net/c406495762 "悬停显示")
 * Python3爬虫实战：实战源码+博客讲解
 * 欢迎关注我的[[CSDN爬虫专栏](http://blog.csdn.net/column/details/15321.html "悬停显示")]<br>
-* <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e70f3fcff3761450fda9b43eadc1910dac308a962ef9e3e87941cd2c681c4bb4"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="Coder" title="Coder"></a><br>
+* <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e70f3fcff3761450fda9b43eadc1910dac308a962ef9e3e87941cd2c681c4bb4"><img border="0" src="https://github.com/Jack-Cherish/Pictures/blob/master/qqgroup.png" alt="Coder" title="Coder"></a><br>
 
 ## 声明
 
