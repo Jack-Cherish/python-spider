@@ -9,6 +9,7 @@ class video_downloader():
 		self.api = 'http://api.xfsub.com/xfsub_api/?url='
 		self.get_url_api = 'http://api.xfsub.com/xfsub_api/url.php'
 		self.url = url.split('#')[0]
+		self.headers = {'Referer': 'http://api.xfsub.com/xfsub_api/?url=%s?qqdrsign=055a4' % self.url}
 		self.target = self.api + self.url
 		self.s = requests.session()
 
@@ -40,9 +41,9 @@ class video_downloader():
 			'key':self.info['key'],
 			'url':self.info['url'],
 			'type':''}
-		req = self.s.post(url=self.get_url_api,data=data)
+		req = self.s.post(url=self.get_url_api,data=data, headers=self.headers)
 		url = self.server + json.loads(req.text)['url']
-		req = self.s.get(url)
+		req = self.s.get(url=url, headers=self.headers)
 		bf = BeautifulSoup(req.text,'xml')										#因为文件是xml格式的，所以要进行xml解析。
 		video_url = bf.find('file').string										#匹配到视频地址
 		return video_url
