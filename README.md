@@ -105,7 +105,10 @@
 	
  * one_hour_spider:一小时入门Python3网络爬虫。
 
-	讲解文章会在gitchat分享结束后免费放出，当然也可以购买抢先观看：http://gitbook.cn/gitchat/activity/59b09bbf015c905277c2cc09
+	原理说明:
+	
+	 * 知乎：https://zhuanlan.zhihu.com/p/29809609
+	 * CSDN：http://blog.csdn.net/c406495762/article/details/78123502
 	
 	本次实战内容有：
 	
