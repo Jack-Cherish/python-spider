@@ -116,7 +116,7 @@
 	 * 优美壁纸下载(动态网站)-unsplash
 	 * 爱奇艺VIP视频下载
 	 
-   * douyin.py:抖音App视频下载
+  * douyin.py:抖音App视频下载
 	
 	抖音App的视频下载，就是普通的App爬取，没有原理说明。
 	
