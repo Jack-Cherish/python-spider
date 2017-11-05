@@ -6,9 +6,9 @@
 * 欢迎关注我的[[CSDN爬虫专栏](http://blog.csdn.net/column/details/15321.html "悬停显示")]<br>
 * 学习交流群【328127489】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e70f3fcff3761450fda9b43eadc1910dac308a962ef9e3e87941cd2c681c4bb4"><img border="0" src="https://github.com/Jack-Cherish/Pictures/blob/master/qqgroup.png" alt="Coder" title="Coder"></a><br>
 
-爱奇艺、优酷、腾讯VIP视频在线解析地址：http://www.cuijiahua.com/vip_video.html
+* 我的个人网站，欢迎关注：http://www.cuijiahua.com/
 
-我的个人网站，欢迎关注！
+* 我用我的网站搭建的爱奇艺、优酷、腾讯等，VIP视频在线解析服务：http://www.cuijiahua.com/vip_video.html
 
 ## 声明
 
