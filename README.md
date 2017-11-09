@@ -8,8 +8,6 @@
 
 * 我的个人网站，欢迎关注：http://www.cuijiahua.com/
 
-* 我用我的网站搭建的爱奇艺、优酷、腾讯等，VIP视频在线解析服务：http://www.cuijiahua.com/vip_video.html
-
 ## 声明
 
 * 软件均仅用于学习交流，请勿用于任何商业用途！
