@@ -124,6 +124,7 @@ class DouYin(object):
 		print('\t\t\t\t抖音App视频下载小助手')
 		print('*' * 100)
 
+		
 if __name__ == '__main__':
 	douyin = DouYin()
 	nickname = r'徐浪浪and芒果琳'
