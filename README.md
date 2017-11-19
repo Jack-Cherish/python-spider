@@ -126,10 +126,22 @@
  
 	抖音App的视频下载，就是普通的App爬取，没有原理说明。
 	
-  	
-
+ * geetest.py:GEETEST验证码破解
+ 
+ 	爬虫最大的敌人之一是什么？没错，验证码！Geetest作为提供验证码服务的行家，市场占有率还是蛮高的。遇到Geetest提供的滑动验证码怎么破？授人予鱼不如授人予渔，接下来就为大家呈现本教程的精彩内容。
+ 
+ 	原理说明:
+	
+	 * 个人网站：http://www.cuijiahua.com/blog/2017/11/spider_2_geetest.html
+	 
+	动态示意图：
+	
+	![image](https://github.com/Jack-Cherish/Pictures/blob/master/spider_2_1.gif)
+	 
+	
 
 	
+  	
 	
 	
 
