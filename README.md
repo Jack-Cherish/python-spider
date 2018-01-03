@@ -137,6 +137,10 @@
 	动态示意图：
 	
 	![image](https://github.com/Jack-Cherish/Pictures/blob/master/spider_2_1.gif)
+	
+ * 12306.py:用Python抢火车票简单代码
+ 
+	可以自己慢慢丰富，蛮简单，有爬虫基础很好操作，没有原理说明。
 	 
 	
 
