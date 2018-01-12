@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="2">
+    <title>Jack Cui答题辅助系统</title>
+  </head>
+  <body>
+    <h1>百万英雄答题辅助系统</h1>
+    <p id="line1"></p>
+    <p id="line2"></p>
+    <p id="line3"></p>
+    <p id="line4"></p>
+    <p id="line5"></p>
+    <p id="line6"></p>
+    <p id="line7"></p>
+    <p id="line8"></p>
+    <p id="line9"></p>
+    <p id="line10"></p>
+    <p id="line11"></p>
+    <p id="line12"></p>
+    <p id="line13"></p>
+    <p id="line14"></p>
+    <p id="line15"></p>
+    <p id="line16"></p>
+    <p id="line17"></p>
+    <p id="line18"></p>
+    <p id="line19"></p>
+    <p id="line20"></p>
+    <p id="line21"></p>
+    <p id="line22"></p>
+    <p id="line23"></p>
+    <p id="line24"></p>
+    <p id="line25"></p>
+    <script src="http://222.222.124.77:9001/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('http://139.199.191.192:80');
+      var line1 = document.getElementById('line1');
+      var line2 = document.getElementById('line2');
+      var line3 = document.getElementById('line3');
+      var line4 = document.getElementById('line4');
+      var line5 = document.getElementById('line5');
+      var line6 = document.getElementById('line6');
+      var line7 = document.getElementById('line7');
+      var line8 = document.getElementById('line8');
+      var line9 = document.getElementById('line9');
+      var line10 = document.getElementById('line10');
+      var line11 = document.getElementById('line11');
+      var line12 = document.getElementById('line12');
+      var line13 = document.getElementById('line13');
+      var line14 = document.getElementById('line14');
+      var line15 = document.getElementById('line15');
+      var line16 = document.getElementById('line16');
+      var line17 = document.getElementById('line17');
+      var line18 = document.getElementById('line18');
+      var line19 = document.getElementById('line19');
+      var line20 = document.getElementById('line20');
+      var line21 = document.getElementById('line21');
+      var line22 = document.getElementById('line22');
+      var line23 = document.getElementById('line23');
+      var line24 = document.getElementById('line24');
+      var line25 = document.getElementById('line25');
+      socket.on('users',function(data){
+        if(data.line1 == 'f'){
+           line1.innerHTML = '' 
+        }
+        else{
+           line1.innerHTML = data.line1
+		}
+        if(data.line2 == 'f'){
+           line2.innerHTML = '' 
+        }
+        else{
+           line2.innerHTML = data.line2
+		}
+        if(data.line3 == 'f'){
+           line3.innerHTML = '' 
+        }
+        else{
+           line3.innerHTML = data.line3
+		}
+        if(data.line4 == 'f'){
+           line4.innerHTML = '' 
+        }
+        else{
+           line4.innerHTML = data.line4
+        }
+		if(data.line5 == 'f'){
+           line5.innerHTML = '' 
+        }
+        else{
+           line5.innerHTML = data.line5
+        }
+		if(data.line6 == 'f'){
+           line6.innerHTML = '' 
+        }
+		else{
+           line6.innerHTML = data.line6
+        }
+		if(data.line7 == 'f'){
+           line7.innerHTML = ''
+        }
+        else{
+           line7.innerHTML = data.line7
+        }
+		if(data.line8 == 'f'){
+           line8.innerHTML = '' 
+		}
+		else{
+		   line8.innerHTML = data.line8
+		}
+        if(data.line9 == 'f'){
+           line9.innerHTML = '' 
+		}
+		else{
+		   line9.innerHTML = data.line9
+		}
+        if(data.line10 == 'f'){
+           line10.innerHTML = '' 
+        }
+        else{
+           line10.innerHTML = data.line10
+        }
+		if(data.line11 == 'f'){
+           line11.innerHTML = '' 
+        }
+        else{
+           line11.innerHTML = data.line11
+        }
+		if(data.line12 == 'f'){
+           line12.innerHTML = '' 
+        }
+        else{
+           line12.innerHTML = data.line12
+        }
+		if(data.line13 == 'f'){
+           line13.innerHTML = '' 
+        }
+        else{
+           line13.innerHTML = data.line13
+        }
+		if(data.line14 == 'f'){
+           line14.innerHTML = '' 
+        }
+        else{
+           line14.innerHTML = data.line14
+        }
+		if(data.line15 == 'f'){
+           line15.innerHTML = '' 
+        }
+        else{
+           line15.innerHTML = data.line15
+        }
+		if(data.line16 == 'f'){
+           line16.innerHTML = ''
+        }
+        else{
+           line16.innerHTML = data.line16
+		}
+        if(data.line17 == 'f'){
+           line17.innerHTML = '' 
+		}
+		else{
+		   line17.innerHTML = data.line17
+		}
+        if(data.line18 == 'f'){
+           line18.innerHTML = '' 
+        }
+        else{
+           line18.innerHTML = data.line18
+		}
+        if(data.line19 == 'f'){
+           line19.innerHTML = '' 
+        }
+        else{
+           line19.innerHTML = data.line19
+		}
+        if(data.line20 == 'f'){
+           line20.innerHTML = '' 
+        }
+        else{
+           line20.innerHTML = data.line20
+		}
+        if(data.line21 == 'f'){
+           line21.innerHTML = '' 
+        }
+        else{
+           line21.innerHTML = data.line21
+        }
+		if(data.line22 == 'f'){
+           line22.innerHTML = '' 
+        }
+        else{
+           line22.innerHTML = data.line22
+        }
+		if(data.line23 == 'f'){
+           line23.innerHTML = '' 
+        }
+		else{
+           line23.innerHTML = data.line23
+        }
+		if(data.line24 == 'f'){
+           line24.innerHTML = ''
+        }
+        else{
+           line24.innerHTML = data.line24
+        }
+		if(data.line25 == 'f'){
+           line25.innerHTML = '' 
+		}
+		else{
+		   line25.innerHTML = data.line25
+		}
+      });
+    </script>
+
+  </body>
+</html>
