@@ -141,11 +141,20 @@
  * 12306.py:用Python抢火车票简单代码
  
 	可以自己慢慢丰富，蛮简单，有爬虫基础很好操作，没有原理说明。
-	 
 	
-
+ * baiwan:百万英雄辅助答题
+ 
+	效果图：
 	
-  	
+	![image](https://github.com/Jack-Cherish/Pictures/blob/master/11.gif)
+	
+  	功能介绍：
+	
+	服务器端，使用Python（baiwan.py）通过抓包获得的接口获取答题数据，解析之后通过百度知道搜索接口匹配答案，将最终匹配的结果写入文件（file.txt)。
+	
+	Node.js（app.js）每隔1s读取一次file.txt文件，并将读取结果通过socket.io推送给客户端（index.html）。
+	
+	声明：没做过后端和前端，花了一天时间，现学现卖弄好的，javascript也是现看现用，百度的程序，调试调试而已。可能有很多用法比较low的地方，用法不对，请勿见怪，有大牛感兴趣，可以自行完善。
 	
 	
 
