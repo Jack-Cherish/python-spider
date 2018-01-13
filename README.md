@@ -148,6 +148,10 @@
 	
 	![image](https://github.com/Jack-Cherish/Pictures/blob/master/11.gif)
 	
+	原理说明：
+	
+	* 个人网站：http://cuijiahua.com/blog/2018/01/spider_3.html
+	
   	功能介绍：
 	
 	服务器端，使用Python（baiwan.py）通过抓包获得的接口获取答题数据，解析之后通过百度知道搜索接口匹配答案，将最终匹配的结果写入文件（file.txt)。
