@@ -42,7 +42,9 @@
 
 	感谢Python3二维码生成器作者：https://github.com/sylnsfar/qrcode
 	
-	编译好的软件下载连接：http://pan.baidu.com/s/1eR4Y7aM  解压密码：`c406495762`
+	编译好的软件下载连接：https://pan.baidu.com/s/1bqSTNJL 密码:p8bs
+	
+	解压密码：`cuijiahua.com`
 	
 	无需Python3环境，在Windows下，解压即用！[软件使用方法](http://blog.csdn.net/c406495762/article/details/71334633 "悬停显示")
 	
