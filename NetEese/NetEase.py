@@ -218,7 +218,6 @@ class NetEase():
 		except:
 			click.echo('download_song_by_id error')
 
-
 if __name__ == '__main__':
 	timeout = 60
 	output = 'Musics'
