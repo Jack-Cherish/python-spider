@@ -148,7 +148,7 @@
  
 	效果图：
 	
-	![image](https://github.com/Jack-Cherish/Pictures/blob/master/12.gif)
+	![image](https://github.com/Jack-Cherish/Pictures/blob/master/11.gif)
 	
 	原理说明：
 	
