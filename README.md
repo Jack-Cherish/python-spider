@@ -134,11 +134,23 @@
 	
  * douyin_pro:抖音App视频下载（升级版）
  
-	抖音App的视频下载，添加视频解析网站，支持无水印视频下载。
+	抖音App的视频下载，添加视频解析网站，支持无水印视频下载，使用第三方平台解析。
 
 	原理说明:
 	
 	 * 个人网站：http://cuijiahua.com/blog/2018/03/spider-5.html
+	 
+ * douyin_pro_2:抖音App视频下载（升级版2）
+ 
+	抖音App的视频下载，添加视频解析网站，支持无水印视频下载，通过url解析，无需第三方平台。
+	
+	原理说明:
+	
+	 * 个人网站：http://cuijiahua.com/blog/2018/03/spider-5.html
+	 
+	动态示意图：
+	
+	![image](https://github.com/Jack-Cherish/Pictures/blob/master/14.gif)
 	
  * geetest.py:GEETEST验证码破解
  
