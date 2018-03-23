@@ -121,7 +121,6 @@ class DouYin(object):
 				video_name = video_names[num]
 			self.video_downloader(video_urls[num], os.path.join(nickname, video_name), watermark_flag)
 			print('\n')
-
 		print('下载完成!')
 
 	def hello(self):
