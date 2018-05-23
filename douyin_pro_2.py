@@ -8,7 +8,14 @@ class DouYin(object):
 		"""
 		抖音App视频下载
 		"""
-		pass
+		self.headers = {
+			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+			'accept-encoding': 'gzip, deflate, br',
+			'accept-language': 'zh-CN,zh;q=0.9',
+			'cache-control': 'max-age=0',
+			'upgrade-insecure-requests': '1',
+			'user-agent': 'Mozilla/5.0 (Linux; U; Android 5.1.1; zh-cn; MI 4S Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.1.3',
+		}
 
 	def get_video_urls(self, user_id):
 		"""
@@ -23,24 +30,16 @@ class DouYin(object):
 		video_names = []
 		video_urls = []
 		unique_id = ''
-		headers = {
-			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
-			'accept-encoding': 'gzip, deflate, br',
-			'accept-language': 'zh-CN,zh;q=0.9',
-			'cache-control': 'max-age=0',
-			'upgrade-insecure-requests': '1',
-			'user-agent': 'Mozilla/5.0 (Linux; U; Android 5.1.1; zh-cn; MI 4S Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.1.3',
-		}
 		while unique_id != user_id:
 			search_url = 'https://api.amemv.com/aweme/v1/discover/search/?cursor=0&keyword=%s&count=10&type=1&retry_type=no_retry&iid=17900846586&device_id=34692364855&ac=wifi&channel=xiaomi&aid=1128&app_name=aweme&version_code=162&version_name=1.6.2&device_platform=android&ssmix=a&device_type=MI+5&device_brand=Xiaomi&os_api=24&os_version=7.0&uuid=861945034132187&openudid=dc451556fc0eeadb&manifest_version_code=162&resolution=1080*1920&dpi=480&update_version_code=1622' % user_id
-			req = requests.get(search_url, headers=headers)
+			req = requests.get(search_url, headers=self.headers)
 			html = json.loads(req.text)
 			aweme_count = html['user_list'][0]['user_info']['aweme_count']
 			uid = html['user_list'][0]['user_info']['uid']
 			nickname = html['user_list'][0]['user_info']['nickname']
 			unique_id = html['user_list'][0]['user_info']['unique_id']
 		user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=0&count=%s' % (uid, aweme_count)
-		req = requests.get(user_url, headers=headers)
+		req = requests.get(user_url, headers=self.headers)
 		html = json.loads(req.text)
 		for each in html['aweme_list']:
 			share_desc = each['share_info']['share_desc']
@@ -87,7 +86,7 @@ class DouYin(object):
 		"""
 		size = 0
 		video_url = self.get_download_url(video_url, watermark_flag=watermark_flag)
-		with closing(requests.get(video_url, stream=True)) as response:
+		with closing(requests.get(video_url, headers=self.headers, stream=True)) as response:
 			chunk_size = 1024
 			content_size = int(response.headers['content-length']) 
 			if response.status_code == 200:
