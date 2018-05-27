@@ -6,6 +6,8 @@ from urllib.request import urlretrieve
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import PIL.Image as image
+import time
+import random
 import re
 
 class Crack():
