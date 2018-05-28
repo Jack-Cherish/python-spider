@@ -43,11 +43,13 @@ class DouYin(object):
 		html = json.loads(req.text)
 		for each in html['aweme_list']:
 			share_desc = each['share_info']['share_desc']
+			for c in r'\/:*?"<>|':
+				share_desc = share_desc.replace(c, '')
 			unix_timestamp = each['create_time']
 			utc_time = datetime.fromtimestamp(unix_timestamp, timezone.utc)
 			local_time = utc_time.astimezone()
 			tc = local_time.strftime('%Y-%m-%d-%H-%M-%S')
-			if '抖音-原创音乐短视频社区' == share_desc:
+			if share_desc in ['抖音-原创音乐短视频社区', 'TikTok']:
 				video_names.append(tc + '.mp4')
 			else:
 				video_names.append(tc + '-' + share_desc + '.mp4')
