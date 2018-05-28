@@ -43,8 +43,9 @@ class DouYin(object):
 		html = json.loads(req.text)
 		for each in html['aweme_list']:
 			share_desc = each['share_info']['share_desc']
-			for c in r'\/:*?"<>|':
-				share_desc = share_desc.replace(c, '')
+			if os.name == 'nt':
+				for c in r'\/:*?"<>|':
+					share_desc = share_desc.replace(c, '')
 			unix_timestamp = each['create_time']
 			utc_time = datetime.fromtimestamp(unix_timestamp, timezone.utc)
 			local_time = utc_time.astimezone()
