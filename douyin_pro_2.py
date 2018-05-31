@@ -29,15 +29,15 @@ class DouYin(object):
 		"""
 		video_names = []
 		video_urls = []
-		unique_id = ''
-		while unique_id != user_id:
+		short_id = ''
+		while short_id != user_id:
 			search_url = 'https://api.amemv.com/aweme/v1/discover/search/?cursor=0&keyword=%s&count=10&type=1&retry_type=no_retry&iid=17900846586&device_id=34692364855&ac=wifi&channel=xiaomi&aid=1128&app_name=aweme&version_code=162&version_name=1.6.2&device_platform=android&ssmix=a&device_type=MI+5&device_brand=Xiaomi&os_api=24&os_version=7.0&uuid=861945034132187&openudid=dc451556fc0eeadb&manifest_version_code=162&resolution=1080*1920&dpi=480&update_version_code=1622' % user_id
 			req = requests.get(search_url, headers=self.headers)
 			html = json.loads(req.text)
 			aweme_count = html['user_list'][0]['user_info']['aweme_count']
 			uid = html['user_list'][0]['user_info']['uid']
 			nickname = html['user_list'][0]['user_info']['nickname']
-			unique_id = html['user_list'][0]['user_info']['unique_id']
+			short_id = html['user_list'][0]['user_info']['short_id']
 		user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=0&count=%s' % (uid, aweme_count)
 		req = requests.get(user_url, headers=self.headers)
 		html = json.loads(req.text)
