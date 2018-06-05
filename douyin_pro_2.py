@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from contextlib import closing
-import requests, json, time, re, os, sys, time
+import requests, json, time, re, os, sys
 from datetime import datetime, timezone
 
 class DouYin(object):
@@ -29,12 +29,13 @@ class DouYin(object):
 		"""
 		video_names = []
 		video_urls = []
+		share_urls = []
 		unique_id = ''
 		while unique_id != user_id:
 			search_url = 'https://api.amemv.com/aweme/v1/discover/search/?cursor=0&keyword=%s&count=10&type=1&retry_type=no_retry&iid=17900846586&device_id=34692364855&ac=wifi&channel=xiaomi&aid=1128&app_name=aweme&version_code=162&version_name=1.6.2&device_platform=android&ssmix=a&device_type=MI+5&device_brand=Xiaomi&os_api=24&os_version=7.0&uuid=861945034132187&openudid=dc451556fc0eeadb&manifest_version_code=162&resolution=1080*1920&dpi=480&update_version_code=1622' % user_id
 			req = requests.get(search_url, headers=self.headers)
 			html = json.loads(req.text)
-			aweme_count = html['user_list'][0]['user_info']['aweme_count']
+			aweme_count = 32767 # html['user_list'][0]['user_info']['aweme_count']
 			uid = html['user_list'][0]['user_info']['uid']
 			nickname = html['user_list'][0]['user_info']['nickname']
 			unique_id = html['user_list'][0]['user_info']['unique_id']
@@ -54,9 +55,10 @@ class DouYin(object):
 				video_names.append(tc + '.mp4')
 			else:
 				video_names.append(tc + '-' + share_desc + '.mp4')
-			video_urls.append(each['share_info']['share_url'])
+			share_urls.append(each['share_info']['share_url'])
+			video_urls.append(each['video']['play_addr']['url_list'][0])
 
-		return video_names, video_urls, nickname
+		return video_names, video_urls, share_urls, nickname
 
 	def get_download_url(self, video_url, watermark_flag):
 		"""
@@ -66,15 +68,13 @@ class DouYin(object):
 		Returns:
 			download_url: 带水印的视频下载地址
 		"""
-		req = requests.get(video_url)
-		_playaddr_re = re.compile(r'playAddr: "(.+)",')
-		playaddr = _playaddr_re.search(req.text)
 		# 带水印视频
 		if watermark_flag == True:
-			download_url = playaddr.group(1)
+			download_url = video_url
 		# 无水印视频
 		else:
-			download_url = playaddr.group(1).replace('playwm','play')
+			download_url = video_url.replace('playwm','play')
+
 		return download_url
 
 	def video_downloader(self, video_url, video_name, watermark_flag=False):
@@ -91,11 +91,11 @@ class DouYin(object):
 		video_url = self.get_download_url(video_url, watermark_flag=watermark_flag)
 		with closing(requests.get(video_url, headers=self.headers, stream=True)) as response:
 			chunk_size = 1024
-			content_size = int(response.headers['content-length']) 
+			content_size = int(response.headers['content-length'])
 			if response.status_code == 200:
 				sys.stdout.write('  [文件大小]:%0.2f MB\n' % (content_size / chunk_size / 1024))
 
-				with open(video_name, "wb") as file:  
+				with open(video_name, "wb") as file:
 					for data in response.iter_content(chunk_size = chunk_size):
 						file.write(data)
 						size += len(data)
@@ -115,12 +115,12 @@ class DouYin(object):
 		self.hello()
 		user_id = input('请输入ID(例如145651081):')
 		watermark_flag = int(input('是否下载带水印的视频(0-否,1-是):'))
-		video_names, video_urls, nickname = self.get_video_urls(user_id)
+		video_names, video_urls, share_urls, nickname = self.get_video_urls(user_id)
 		if nickname not in os.listdir():
 			os.mkdir(nickname)
 		print('视频下载中:共有%d个作品!\n' % len(video_urls))
 		for num in range(len(video_urls)):
-			print('  解析第%d个视频链接 [%s] 中，请稍后!\n' % (num+1, video_urls[num]))
+			print('  解析第%d个视频链接 [%s] 中，请稍后!\n' % (num + 1, share_urls[num]))
 			if '\\' in video_names[num]:
 				video_name = video_names[num].replace('\\', '')
 			elif '/' in video_names[num]:
