@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from contextlib import closing
-import requests, json, time, re, os, sys
+import requests, json, re, os, sys
 from datetime import datetime, timezone
 
 class DouYin(object):
@@ -73,7 +73,7 @@ class DouYin(object):
 			download_url = video_url
 		# 无水印视频
 		else:
-			download_url = video_url.replace('playwm','play')
+			download_url = video_url.replace('playwm', 'play')
 
 		return download_url
 
@@ -95,7 +95,7 @@ class DouYin(object):
 			if response.status_code == 200:
 				sys.stdout.write('  [文件大小]:%0.2f MB\n' % (content_size / chunk_size / 1024))
 
-				with open(video_name, "wb") as file:
+				with open(video_name, 'wb') as file:
 					for data in response.iter_content(chunk_size = chunk_size):
 						file.write(data)
 						size += len(data)
