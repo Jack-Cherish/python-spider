@@ -18,6 +18,7 @@
 ## 目录
 
 * [爬虫小工具](#爬虫小工具)
+    * [文件下载小助手](https://github.com/Jack-Cherish/python-spider/blob/master/downloader.py "悬停显示")
 * [爬虫实战](#爬虫实战)
     * [笔趣看小说下载](https://github.com/Jack-Cherish/python-spider/blob/master/biqukan.py "悬停显示")
     * [VIP视频下载](https://github.com/Jack-Cherish/python-spider/tree/master/video_downloader "悬停显示")
