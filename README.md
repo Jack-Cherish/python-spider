@@ -15,6 +15,30 @@
 
 * 文章在自己的个人网站首发，其他平台文章均属转发，如想获得最新更新进展，欢迎关注我的个人网站：http://cuijiahua.com/
 
+## 目录
+
+* [爬虫小工具](#爬虫小工具)
+* [爬虫实战](#爬虫实战)
+    * [笔趣看小说下载](https://github.com/Jack-Cherish/python-spider/blob/master/biqukan.py "悬停显示")
+    * [VIP视频下载](https://github.com/Jack-Cherish/python-spider/tree/master/video_downloader "悬停显示")
+    * [百度文库文章下载_rev1](https://github.com/Jack-Cherish/python-spider/blob/master/baiduwenku.py "悬停显示")
+    * [百度文库文章下载_rev2](https://github.com/Jack-Cherish/python-spider/blob/master/baiduwenku_pro_1.py "悬停显示")
+    * [《帅啊》网帅哥图片下载](https://github.com/Jack-Cherish/python-spider/blob/master/shuaia.py "悬停显示")
+    * [构建代理IP池](https://github.com/Jack-Cherish/python-spider/blob/master/daili.py "悬停显示")
+    * [《火影忍者》漫画下载](https://github.com/Jack-Cherish/python-spider/tree/master/cartoon "悬停显示")
+    * [财务报表下载小助手](https://github.com/Jack-Cherish/python-spider/blob/master/financical.py "悬停显示")
+    * [一小时入门网络爬虫](https://github.com/Jack-Cherish/python-spider/tree/master/one_hour_spider "悬停显示")
+    * [抖音App视频下载_rev1](https://github.com/Jack-Cherish/python-spider/blob/master/douyin.py "悬停显示")
+    * [抖音App视频下载_rev2](https://github.com/Jack-Cherish/python-spider/blob/master/douyin_pro.py "悬停显示")
+    * [抖音App视频下载_rev3](https://github.com/Jack-Cherish/python-spider/blob/master/douyin_pro_2.py "悬停显示")
+    * [抖音App视频下载_rev3](https://github.com/Jack-Cherish/python-spider/blob/master/douyin_pro_2.py "悬停显示")
+    * [第一代GEEST验证码破解](https://github.com/Jack-Cherish/python-spider/blob/master/geetest.py "悬停显示")
+    * [12306抢票小助手](https://github.com/Jack-Cherish/python-spider/blob/master/12306.py "悬停显示")
+    * [百万英雄答题辅助系统](https://github.com/Jack-Cherish/python-spider/tree/master/baiwan "悬停显示")   
+    * [百万英雄答题辅助系统](https://github.com/Jack-Cherish/python-spider/tree/master/Netease "悬停显示")
+    * [B站视频和弹幕批量下载](https://github.com/Jack-Cherish/python-spider/tree/master/bilibili "悬停显示")
+* [其它](#其它)
+
 ## 爬虫小工具
 
 * downloader.py:文件下载小助手
@@ -202,8 +226,22 @@
 	功能介绍：
 	
 	根据music_list.txt文件里的歌单的信息下载网易云音乐，将自己喜欢的音乐进行批量下载。
+
+ * bilibili:B站视频和弹幕批量下载
+ 	
+	原理说明：
 	
-## 其他
+	暂无
+	
+	使用说明：
+	
+        python bilibili.py -d 猫 -k 猫 -p 10
+
+        三个参数：
+        -d	保存视频的文件夹名
+        -k	B站搜索的关键字
+        -p	下载搜索结果前多少页
+	
+## 其它
 
  * 欢迎 Pull requests，感谢贡献。
-
