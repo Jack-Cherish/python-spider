@@ -32,7 +32,7 @@
     * [抖音App视频下载_rev1](https://github.com/Jack-Cherish/python-spider/blob/master/douyin.py "悬停显示")
     * [抖音App视频下载_rev2](https://github.com/Jack-Cherish/python-spider/blob/master/douyin_pro.py "悬停显示")
     * [抖音App视频下载_rev3](https://github.com/Jack-Cherish/python-spider/blob/master/douyin_pro_2.py "悬停显示")
-    * [第一代GEEST验证码破解](https://github.com/Jack-Cherish/python-spider/blob/master/geetest.py "悬停显示")
+    * [GEETEST验证码破解](https://github.com/Jack-Cherish/python-spider/blob/master/geetest.py "悬停显示")
     * [12306抢票小助手](https://github.com/Jack-Cherish/python-spider/blob/master/12306.py "悬停显示")
     * [百万英雄答题辅助系统](https://github.com/Jack-Cherish/python-spider/tree/master/baiwan "悬停显示")   
     * [网易云音乐批量下载](https://github.com/Jack-Cherish/python-spider/tree/master/Netease "悬停显示")
