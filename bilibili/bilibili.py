@@ -15,7 +15,7 @@ class BiliBili:
 			'Accept': '*/*',
 			'Accept-Encoding': 'gzip, deflate, br',
 			'Accept-Language': 'zh-CN,zh;q=0.9',
-			'Referer': 'https://search.bilibili.com/all?keyword=%s' % parse.quote('猫')}
+			'Referer': 'https://search.bilibili.com/all?keyword=%s' % parse.quote(keyword)}
 
 		self.search_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36',
 			'Accept-Language': 'zh-CN,zh;q=0.9',
@@ -76,7 +76,7 @@ class BiliBili:
 		"""
 		req = self.sess.get(url=search_url, headers=self.search_headers, verify=False)
 		html = json.loads(req.text)
-		videos = html['result']
+		videos = html["data"]['result']
 		titles = []
 		arcurls = []
 		for video in videos:
@@ -159,7 +159,7 @@ class BiliBili:
 		if self.dir not in os.listdir():
 			os.mkdir(self.dir)
 		for page in range(1, pages+1):
-			search_url = 'https://search.bilibili.com/api/search?search_type=video&keyword={}&order=totalrank&duration=1&tids=0&page={}'.format(keyword, page)
+			search_url = 'https://api.bilibili.com/x/web-interface/search/type?jsonp=jsonp&search_type=video&keyword={}&page={}'.format(keyword, page)
 			titles, arcurls = self.search_video(search_url)
 			for index, arcurl in enumerate(arcurls):
 				title = titles[index]
