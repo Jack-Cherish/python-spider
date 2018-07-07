@@ -8,6 +8,10 @@
 * Author: Jack Cui
 * Date: 2018.7.7
 
+## 效果图：
+
+![image](https://github.com/Jack-Cherish/Pictures/blob/master/jd.gif)
+
 ## 使用说明
 
 	python jd.py -k 芒果
