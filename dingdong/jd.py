@@ -188,6 +188,15 @@ def download_image(path, image_url):
 					sys.stdout.flush()
 
 def run(path, keyword, num):
+	"""
+	运行函数
+	Parameters:
+		path - str 图片保存目录
+		keyword - str 关键词
+		num - int 下载的商店个数
+	Returns:
+		None
+	"""
 	flag = False
 	pages = 1
 	while flag == False:
@@ -214,4 +223,3 @@ if __name__ == '__main__':
 	parser.add_argument('-n', '--num', help=('the number of goods to download images'), type=int, default=1)
 	args = parser.parse_args()
 	run(args.dir, args.keyword, args.num)
-	
