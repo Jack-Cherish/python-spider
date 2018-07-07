@@ -214,3 +214,4 @@ if __name__ == '__main__':
 	parser.add_argument('-n', '--num', help=('the number of goods to download images'), type=int, default=1)
 	args = parser.parse_args()
 	run(args.dir, args.keyword, args.num)
+	
