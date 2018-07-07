@@ -37,6 +37,7 @@
     * [百万英雄答题辅助系统](https://github.com/Jack-Cherish/python-spider/tree/master/baiwan "悬停显示")   
     * [网易云音乐批量下载](https://github.com/Jack-Cherish/python-spider/tree/master/Netease "悬停显示")
     * [B站视频和弹幕批量下载](https://github.com/Jack-Cherish/python-spider/tree/master/bilibili "悬停显示")
+    * [京东商品晒单图下载](https://github.com/Jack-Cherish/python-spider/tree/master/dingdong "悬停显示")
 * [其它](#其它)
 
 ## 爬虫小工具
@@ -241,7 +242,26 @@
         -d	保存视频的文件夹名
         -k	B站搜索的关键字
         -p	下载搜索结果前多少页
+
+ * jingdong：京东商品晒单图下载
+ 
+ 	效果图：
 	
+	![image](https://github.com/Jack-Cherish/Pictures/blob/master/jd.gif)
+ 	
+	原理说明：
+	
+	暂无
+	
+	使用说明：
+	
+        python jd.py -k 芒果
+
+        三个参数：
+        -d	保存图片的路径，默认为fd.py文件所在文件夹
+        -k	搜索关键词
+        -n  	下载商品的晒单图个数，即n个商店的晒单图
+
 ## 其它
 
  * 欢迎 Pull requests，感谢贡献。
