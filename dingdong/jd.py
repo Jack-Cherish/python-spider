@@ -107,10 +107,9 @@ def goods_images(goods_url):
 	Returns:
 		image_urls - list 图片链接
 	"""
-	# 创建session
-	sess = requests.Session()
 	image_urls = []
 	productId = goods_url.split('/')[-1].split('.')[0]
+
 	# 评论url
 	comment_url = 'https://sclub.jd.com/comment/productPageComments.action'
 	comment_params = {'productId':productId,
@@ -127,7 +126,7 @@ def goods_images(goods_url):
 		'Referer':goods_url,
 		'Host': 'sclub.jd.com'}
 
-	comment_req = sess.get(url=comment_url, params=comment_params, headers=comment_headers, verify=False)
+	comment_req = requests.get(url=comment_url, params=comment_params, headers=comment_headers, verify=False)
 	html = json.loads(comment_req.text)
 	# 获得晒图个数
 	imageListCount = html['imageListCount']
@@ -145,7 +144,7 @@ def goods_images(goods_url):
 			'pageSize':'10',
 			'_':now}
 		club_headers = comment_headers
-		club_req = sess.get(url=club_url, params=club_params, headers=club_headers, verify=False)
+		club_req = requests.get(url=club_url, params=club_params, headers=club_headers, verify=False)
 		html = json.loads(club_req.text)
 		for img in html['imgComments']['imgList']:
 			image_urls.append(img['imageUrl'])
@@ -193,7 +192,6 @@ def run(path, keyword, num):
 	pages = 1
 	while flag == False:
 		goods_urls = search_goods(keyword, pages)
-		print(goods_urls)
 		if len(goods_urls) > num:
 			flag = True
 		else:
