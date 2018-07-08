@@ -157,7 +157,7 @@ def goods_images(goods_url):
 
 def download_image(path, image_url):
 	"""
-	视频下载
+	图片下载
 	Parameters:
 		path - str 图片保存地址
 		image_url - str 图片下载地址
