@@ -46,6 +46,11 @@ class DouYin(object):
 			uid = html['user_list'][0]['user_info']['uid']
 			nickname = html['user_list'][0]['user_info']['nickname']
 			unique_id = html['user_list'][0]['user_info']['unique_id']
+			if unique_id != user_id:
+				unique_id = html['user_list'][0]['user_info']['short_id']
+			else:
+				print('用户ID可能输入错误或无法搜索到此用户ID')
+				sys.exit()
 		share_user_url = 'https://www.amemv.com/share/user/%s' % uid
 		share_user = requests.get(share_user_url, headers=self.headers)
 		_dytk_re = re.compile(r"dytk: '(.+)'")
