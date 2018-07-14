@@ -38,17 +38,16 @@ class DouYin(object):
 		share_urls = []
 		unique_id = ''
 		device_id = str(random.randint(3, 5)) + ''.join(map(str, (random.randint(0, 9) for _ in range(10))))
-		while unique_id != user_id:
-			search_url = 'https://api.amemv.com/aweme/v1/discover/search/?cursor=0&keyword={0}&count=10&type=1&retry_type=no_retry&device_id={1}&ac=wifi&channel=xiaomi&aid=1128&app_name=aweme&version_code=162&version_name=1.6.2&device_platform=android&ssmix=a&device_type=MI+5&device_brand=Xiaomi&os_api=24&os_version=7.0&manifest_version_code=162&resolution=1080*1920&dpi=480&update_version_code=1622'.format(user_id, device_id)
-			req = requests.get(search_url, headers=self.headers)
-			html = json.loads(req.text)
-			aweme_count = 32767 # html['user_list'][0]['user_info']['aweme_count']
-			uid = html['user_list'][0]['user_info']['uid']
-			nickname = html['user_list'][0]['user_info']['nickname']
-			unique_id = html['user_list'][0]['user_info']['unique_id']
+		search_url = 'https://api.amemv.com/aweme/v1/discover/search/?cursor=0&keyword={0}&count=10&type=1&retry_type=no_retry&device_id={1}&ac=wifi&channel=xiaomi&aid=1128&app_name=aweme&version_code=162&version_name=1.6.2&device_platform=android&ssmix=a&device_type=MI+5&device_brand=Xiaomi&os_api=24&os_version=7.0&manifest_version_code=162&resolution=1080*1920&dpi=480&update_version_code=1622'.format(user_id, device_id)
+		req = requests.get(search_url, headers=self.headers)
+		html = json.loads(req.text)
+		aweme_count = 32767 # html['user_list'][0]['user_info']['aweme_count']
+		uid = html['user_list'][0]['user_info']['uid']
+		nickname = html['user_list'][0]['user_info']['nickname']
+		unique_id = html['user_list'][0]['user_info']['unique_id']
+		if unique_id != user_id:
+			unique_id = html['user_list'][0]['user_info']['short_id']
 			if unique_id != user_id:
-				unique_id = html['user_list'][0]['user_info']['short_id']
-			else:
 				print('用户ID可能输入错误或无法搜索到此用户ID')
 				sys.exit()
 		share_user_url = 'https://www.amemv.com/share/user/%s' % uid
