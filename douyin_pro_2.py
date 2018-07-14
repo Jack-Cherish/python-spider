@@ -2,6 +2,7 @@
 from contextlib import closing
 import requests, json, re, os, sys, random
 from ipaddress import ip_address
+from subprocess import Popen, PIPE
 
 class DouYin(object):
 	def __init__(self, width = 500, height = 300):
@@ -51,7 +52,11 @@ class DouYin(object):
 		dytk = _dytk_re.search(share_user.text).group(1)
 		print('签名JS下载中')
 		self.video_downloader('https://raw.githubusercontent.com/loadchange/amemv-crawler/master/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
-		singer = os.popen('node fuck-byted-acrawler.js %s' % uid)
+		try:
+			process = Popen(['node', 'fuck-byted-acrawler.js', str(uid)], stdout=PIPE, stderr=PIPE)
+		except (OSError, IOError) as err:
+			print('请先安装 node.js: https://nodejs.org/')
+			sys.exit()
 		sign = singer.readlines()[0]
 		user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=0&count=%s&aid=1128&_signature=%s&dytk=%s' % (uid, aweme_count, sign, dytk)
 		req = requests.get(user_url, headers=self.headers)
