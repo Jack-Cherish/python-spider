@@ -57,7 +57,7 @@ class DouYin(object):
 		except (OSError, IOError) as err:
 			print('请先安装 node.js: https://nodejs.org/')
 			sys.exit()
-		sign = singer.readlines()[0]
+		sign = process.communicate()[0].decode()
 		user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=0&count=%s&aid=1128&_signature=%s&dytk=%s' % (uid, aweme_count, sign, dytk)
 		req = requests.get(user_url, headers=self.headers)
 		html = json.loads(req.text)
