@@ -3,6 +3,7 @@ from contextlib import closing
 import requests, json, re, os, sys, random
 from ipaddress import ip_address
 from subprocess import Popen, PIPE
+import urllib
 
 class DouYin(object):
 	def __init__(self, width = 500, height = 300):
@@ -54,6 +55,8 @@ class DouYin(object):
 		share_user = requests.get(share_user_url, headers=self.headers)
 		_dytk_re = re.compile(r"dytk: '(.+)'")
 		dytk = _dytk_re.search(share_user.text).group(1)
+		print('JS签名下载中')
+		urllib.request.urlretrieve('https://github.com/Jack-Cherish/python-spider/blob/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
 		try:
 			process = Popen(['node', 'fuck-byted-acrawler.js', str(uid)], stdout=PIPE, stderr=PIPE)
 		except (OSError, IOError) as err:
