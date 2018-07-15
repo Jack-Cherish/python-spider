@@ -166,7 +166,7 @@ class DouYin(object):
 		"""
 		print('*' * 100)
 		print('\t\t\t\t抖音App视频下载小助手')
-		print('\t\t作者:Jack Cui')
+		print('\t\t作者:Jack Cui、steven7851')
 		print('*' * 100)
 
 
