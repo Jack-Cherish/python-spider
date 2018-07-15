@@ -164,7 +164,7 @@
 	
 	 * 个人网站：http://cuijiahua.com/blog/2018/03/spider-5.html
 	 
- * douyin_pro_2:抖音App视频下载（升级版2）
+ * douyin:抖音App视频下载（升级版2）
  
 	抖音App的视频下载，添加视频解析网站，支持无水印视频下载，通过url解析，无需第三方平台。
 	
