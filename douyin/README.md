@@ -8,7 +8,7 @@
 
 ## 运行效果
 
-	![image](https://github.com/Jack-Cherish/Pictures/blob/master/14.gif)
+![image](https://github.com/Jack-Cherish/Pictures/blob/master/14.gif)
 
 ## 使用说明
 
