@@ -275,11 +275,9 @@
 	
 	使用说明：
 	
-	cd zhengfang_system_spider
-	
-	pip install -r requirements.txt
-	
-	python spider.py
+        cd zhengfang_system_spider
+        pip install -r requirements.txt
+        python spider.py
 
 ## 其它
 
