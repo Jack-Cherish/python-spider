@@ -244,11 +244,11 @@
         -k	B站搜索的关键字
         -p	下载搜索结果前多少页
 
- * jingdong：京东商品晒单图下载
+ * zhengfang_system_spider：对正方教务管理系统个人课表，学生成绩，绩点等简单爬取
  
  	效果图：
 	
-	![image](https://github.com/Jack-Cherish/Pictures/blob/master/jd.gif)
+	![image](/zhengfang_system_spider/screenshot/zf.png)
  	
 	原理说明：
 	
@@ -256,12 +256,13 @@
 	
 	使用说明：
 	
-        python jd.py -k 芒果
+	cd zhengfang_system_spider
+	
+	pip install -r requirements.txt
+	
+	python spider.py
 
-        三个参数：
-        -d	保存图片的路径，默认为fd.py文件所在文件夹
-        -k	搜索关键词
-        -n  	下载商品的晒单图个数，即n个商店的晒单图
+ * jingdong：京东商品晒单图下载
 
 ## 其它
 
