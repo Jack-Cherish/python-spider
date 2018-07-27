@@ -38,6 +38,7 @@
     * [网易云音乐批量下载](https://github.com/Jack-Cherish/python-spider/tree/master/Netease "悬停显示")
     * [B站视频和弹幕批量下载](https://github.com/Jack-Cherish/python-spider/tree/master/bilibili "悬停显示")
     * [京东商品晒单图下载](https://github.com/Jack-Cherish/python-spider/tree/master/dingdong "悬停显示")
+    * [正方教务管理系统爬虫](https://github.com/Jack-Cherish/python-spider/tree/master/zhengfang_system_spider "悬停显示")
 * [其它](#其它)
 
 ## 爬虫小工具
