@@ -57,7 +57,6 @@ class DouYin(object):
 		print('解析视频链接中')
 		while has_more != 0:
 			user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (user_id, max_cursor, sign, dytk)
-			print(user_url)
 			req = requests.get(user_url, headers=self.headers)
 			while req.status_code != 200:
 				req = requests.get(user_url, headers=self.headers)
