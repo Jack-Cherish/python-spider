@@ -47,7 +47,7 @@ class DouYin(object):
 		_nickname_re = re.compile(r'<p class="nickname">(.+?)<\/p>')
 		nickname = _nickname_re.search(share_user.text).group(1)
 		print('JS签名下载中')
-		urllib.request.urlretrieve('https://github.com/Jack-Cherish/python-spider/blob/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
+		urllib.request.urlretrieve('https://raw.githubusercontent.com/Jack-Cherish/python-spider/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
 		try:
 			process = Popen(['node', 'fuck-byted-acrawler.js', str(user_id)], stdout=PIPE, stderr=PIPE)
 		except (OSError, IOError) as err:
