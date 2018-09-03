@@ -2,6 +2,8 @@
 import random
 import re
 import time
+# 图片转换
+import base64
 from urllib.request import urlretrieve
 
 from bs4 import BeautifulSoup
@@ -13,6 +15,63 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+def save_base64img(data_str, save_name):
+    """
+    将 base64 数据转化为图片保存到指定位置
+    :param data_str: base64 数据，不包含类型
+    :param save_name: 保存的全路径
+    """
+    img_data = base64.b64decode(data_str)
+    file = open(save_name, 'wb')
+    file.write(img_data)
+    file.close()
+
+
+def get_base64_by_canvas(driver, class_name, contain_type):
+    """
+    将 canvas 标签内容转换为 base64 数据
+    :param driver: webdriver 对象
+    :param class_name: canvas 标签的类名
+    :param contain_type: 返回的数据是否包含类型
+    :return: base64 数据
+    """
+    # 防止图片未加载完就下载一张空图
+    bg_img = ''
+    while len(bg_img) < 5000:
+        getImgJS = 'return document.getElementsByClassName("' + class_name + '")[0].toDataURL("image/png");'
+        bg_img = driver.execute_script(getImgJS)
+        time.sleep(0.5)
+    # print(bg_img)
+    if contain_type:
+        return bg_img
+    else:
+        return bg_img[bg_img.find(',') + 1:]
+
+
+def save_bg(driver, bg_path="bg.png", bg_class="geetest_canvas_bg geetest_absolute"):
+    """
+    保存包含缺口的背景图
+    :param driver: webdriver 对象
+    :param bg_path: 保存路径
+    :param bg_class: 背景图的 class 属性
+    :return: 保存路径
+    """
+    bg_img_data = get_base64_by_canvas(driver, bg_class, False)
+    save_base64img(bg_img_data, bg_path)
+    return bg_path
+
+
+def save_full_bg(driver, full_bg_path="fbg.png", full_bg_class="geetest_canvas_fullbg geetest_fade geetest_absolute"):
+    """
+    保存完整的的背景图
+    :param driver: webdriver 对象
+    :param full_bg_path: 保存路径
+    :param full_bg_class: 完整背景图的 class 属性
+    :return: 保存路径
+    """
+    bg_img_data = get_base64_by_canvas(driver, full_bg_class, False)
+    save_base64img(bg_img_data, full_bg_path)
+    return full_bg_path
 
 class Crack():
 	def __init__(self,keyword):
@@ -239,11 +298,11 @@ class Crack():
 		bg_location_list, fullbg_location_list = self.get_images(bg_filename, fullbg_filename)
 
 		# 根据位置对图片进行合并还原
-		bg_img = self.get_merge_image(bg_filename, bg_location_list)
-		fullbg_img = self.get_merge_image(fullbg_filename, fullbg_location_list)
+		bg_img = save_bg(self.browser)
+		full_bg_img = save_full_bg(self.browser)
 
         # 获取缺口位置
-		gap = self.get_gap(fullbg_img, bg_img)
+		gap = self.get_gap(image.open(full_bg_img), image.open(bg_img))
 		print('缺口位置', gap)
 
 		track = self.get_track(gap-self.BORDER)
