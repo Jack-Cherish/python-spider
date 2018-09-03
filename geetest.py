@@ -298,10 +298,17 @@ class Crack():
 		bg_location_list, fullbg_location_list = self.get_images(bg_filename, fullbg_filename)
 
 		# 根据位置对图片进行合并还原
+		# 方法1
+		# bg_img = self.get_merge_image(bg_filename, bg_location_list)
+		# fullbg_img = self.get_merge_image(fullbg_filename, fullbg_location_list)
+		# 方法2
 		bg_img = save_bg(self.browser)
 		full_bg_img = save_full_bg(self.browser)
 
-        # 获取缺口位置
+		# 获取缺口位置
+		# 方法1
+		# gap = self.get_gap(fullbg_img, bg_img)
+		# 方法2
 		gap = self.get_gap(image.open(full_bg_img), image.open(bg_img))
 		print('缺口位置', gap)
 
