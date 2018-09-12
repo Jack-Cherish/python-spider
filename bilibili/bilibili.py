@@ -184,7 +184,6 @@ class BiliBili:
 							for flv in movies:
 								f.write("file " + flv)
 								f.write('\n')
-						title = '【LexBurner】好番强推，2009年的零差评动画《钢之炼金术师FA》'
 						try:
 							os.system('cd %s & ffmpeg -f concat -safe 0 -i %s -c copy %s' % (self.dir, 'filelist.txt', title + '.flv'))
 						except:
