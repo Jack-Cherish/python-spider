@@ -10,7 +10,7 @@ from urllib import parse
 import xml2ass
 
 class BiliBili:
-    def __init__(self, dirname, keyword):
+	def __init__(self, dirname, keyword):
 		self.dn_headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.167 Safari/537.36',
 			'Accept': '*/*',
 			'Accept-Encoding': 'gzip, deflate, br',
@@ -101,14 +101,17 @@ class BiliBili:
 			return '',''
 		html = json.loads(infos)
 		durl = html['durl']
-		print(durl)
-		download_url = durl[0]['url']
-		if 'mirrork' in download_url:
-			oid = download_url.split('/')[6]
+		download_url = []
+		for i in range(len(durl)):
+			download_url.append(durl[i]['url'])
+		url = durl[0]['url']
+		if 'mirrork' in url:
+			oid = url.split('/')[6]
 		else:
-			oid = download_url.split('/')[7]
-			if len(oid) >= 10:
-				oid = download_url.split('/')[6]
+			id_ = url.split('/')[7]
+			if len(id_) >= 10:
+				id_ = url.split('/')[6]
+			oid = id_
 		return download_url, oid
 
 
@@ -167,15 +170,33 @@ class BiliBili:
 					title = title.replace(c, '')
 				if title + '.flv' not in os.listdir(self.dir):
 					download_url, oid = self.get_download_url(arcurl)
-					if download_url != '' and oid != '':
-						print('第[ %d ]页:视频[ %s ]下载中:' % (page, title))
-						self.video_downloader(download_url, title + '.flv')
-						print('视频下载完成!')
-						self.get_danmu(oid, title)
-						print('弹幕下载完成!')
+					movies = []
+					for i in range(len(download_url)):
+						if download_url[i] != '' and oid != '':
+							fname = title + '_' + str(i+1) + '.flv'
+							movies.append(fname)
+							print('第[ %d ]页:视频[ %s ]下载中:' % (page, fname))
+							self.video_downloader(download_url[i], fname)
+							print('视频下载完成!')
+					if len(movies) > 1:
+						filelist_fname = os.path.join(self.dir, 'filelist.txt')
+						with open(filelist_fname, 'w') as f:
+							for flv in movies:
+								f.write("file " + flv)
+								f.write('\n')
+						title = '【LexBurner】好番强推，2009年的零差评动画《钢之炼金术师FA》'
+						try:
+							os.system('cd %s & ffmpeg -f concat -safe 0 -i %s -c copy %s' % (self.dir, 'filelist.txt', title + '.flv'))
+						except:
+							print('请安装FFmpeg,并配置环境变量 http://ffmpeg.org/')
+						os.remove(filelist_fname)
+						for movie in movies:
+							os.remove(os.path.join(self.dir, movie))
+						print('视频合并完成！')
+					self.get_danmu(oid, title)
+					print('弹幕下载完成!')
 
 if __name__ == '__main__':
-
 	if len(sys.argv) == 1:
 		sys.argv.append('--help')
 
@@ -189,4 +210,3 @@ if __name__ == '__main__':
 	B.search_videos(args.keyword, args.pages)
 
 	print('全部下载完成!')
-
