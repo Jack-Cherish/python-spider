@@ -8,7 +8,13 @@
 * Author: Jack Cui
 * Date: 2018.6.12
 
+## 更新
+
+* 2018.09.12：添加FFmpeg分段视频合并
+
 ## 使用说明
+
+FFmpeg下载，并配置环境变量。http://ffmpeg.org/
 
 	python bilibili.py -d 猫 -k 猫 -p 10
 
