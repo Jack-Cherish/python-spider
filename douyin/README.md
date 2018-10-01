@@ -12,8 +12,6 @@
 
 ## 使用说明
 
-	python douyin.py
+	python douyin_appsign.py
 
-## 如何获取UID
-点击视频分享，获得短地址链接，在浏览器中打开短地址链接，即可获得原始地址链接，地址中/share/user/后的数字即是UID，例如`https://www.amemv.com/share/user/101969075931?timestamp=1534385418&utm_source=weixin&utm_campaign=client_share&utm_medium=android&app=aweme&iid=41120612220`
-101969075931即是UID
+感谢 [AppSign](https://github.com/AppSign/douyin) 提供免费加签服务
