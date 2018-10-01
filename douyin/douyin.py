@@ -53,7 +53,7 @@ class DouYin(object):
 		except (OSError, IOError) as err:
 			print('请先安装 node.js: https://nodejs.org/')
 			sys.exit()
-		sign = process.communicate()[0].decode().strip('\n')
+		sign = process.communicate()[0].decode().strip('\n').strip('\r')
 		print('解析视频链接中')
 		while has_more != 0:
 			user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (user_id, max_cursor, sign, dytk)
@@ -65,7 +65,7 @@ class DouYin(object):
 				share_desc = each['share_info']['share_desc']
 				if os.name == 'nt':
 					for c in r'\/:*?"<>|':
-						nickname = nickname.replace(c, '').strip()
+						nickname = nickname.replace(c, '').strip().strip('\.')
 						share_desc = share_desc.replace(c, '').strip()
 				share_id = each['aweme_id']
 				if share_desc in ['抖音-原创音乐短视频社区', 'TikTok']:
