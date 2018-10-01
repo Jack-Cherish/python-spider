@@ -25,11 +25,44 @@ class DouYin(object):
 			'X-Forwarded-For': str(rip),
 		}
 
+	def getToken(self):
+		req = requests.get('https://api.appsign.vip:2688/token/douyin/version/2.7.0').json()
+		return self.save_json(req)
+
+	def getDevice(self):
+		req = requests.get('https://api.appsign.vip:2688/douyin/device/new/version/2.7.0').json()
+		device_info = req['data']
+		return device_info
+
+	def getSign(self, token, query):
+		req = requests.post('https://api.appsign.vip:2688/sign', json={'token': token, 'query': query}).json()
+		if req['success']:
+			sign = req['data']
+		else:
+			sign = req['success']
+		return sign
+
+	def params2str(self, params):
+		query = ''
+		for k, v in params.items():
+			query += '%s=%s&' % (k, v)
+		query = query.strip('&')
+		return query
+
+	def save_json(self, data):
+		with open('douyin.txt', 'w') as f:
+			json.dump(data, f, ensure_ascii=False)
+
+	def load_json(self):
+		with open('douyin.txt', 'r') as f:
+			data = json.load(f)
+			return data
+
 	def get_video_urls(self, user_id):
 		"""
 		获得视频播放地址
 		Parameters:
-			user_id：查询的用户UID
+			user_id：查询的用户ID
 		Returns:
 			video_names: 视频名字列表
 			video_urls: 视频链接列表
@@ -38,25 +71,80 @@ class DouYin(object):
 		video_names = []
 		video_urls = []
 		share_urls = []
+		unique_id = ''
 		max_cursor = 0
 		has_more = 1
-		share_user_url = 'https://www.amemv.com/share/user/%s' % user_id
+		device_info = self.getDevice()
+		APPINFO = {
+			'version_code': '2.7.0',
+			'app_version': '2.7.0',
+			'channel': 'App%20Stroe',
+			'app_name': 'aweme',
+			'build_number': '27014',
+			'aid': '1128'
+		}
+		params = {
+			'iid': device_info['iid'],
+			'idfa': device_info['idfa'],
+			'vid': device_info['vid'],
+			'device_id': device_info['device_id'],
+			'openudid': device_info['openudid'],
+			'device_type': device_info['device_type'],
+			'os_version': device_info['os_version'],
+			'os_api': device_info['os_api'],
+			'screen_width': device_info['screen_width'],
+			'device_platform': device_info['device_platform'],
+			'version_code': APPINFO['version_code'],
+			'channel': APPINFO['channel'],
+			'app_name': APPINFO['app_name'],
+			'build_number': APPINFO['build_number'],
+			'app_version': APPINFO['app_version'],
+			'aid': APPINFO['aid'],
+			'ac': 'WIFI',
+			'count': '12',
+			'keyword': user_id,
+			'offset': '0'
+		}
+		query = self.params2str(params)
+		if not os.path.isfile('douyin.txt'):
+			self.getToken()
+		token = self.load_json()['token']
+		sign = self.getSign(token, query)
+		if not sign:
+			self.getToken()
+			token = self.load_json()['token']
+			sign = self.getSign(token, query)
+		params['mas'] = sign['mas']
+		params['as'] = sign['as']
+		params['ts'] = sign['ts']
+		headers = {
+			'User-Agent': 'Aweme/2.7.0 (iPhone; iOS 11.0; Scale/2.00)'
+		}
+		req = requests.get('https://api.amemv.com/aweme/v1/general/search/', params=params, headers=headers)
+		html = json.loads(req.text)
+		uid = html['user_list'][0]['user_info']['uid']
+		nickname = html['user_list'][0]['user_info']['nickname']
+		unique_id = html['user_list'][0]['user_info']['unique_id']
+		if unique_id != user_id:
+			unique_id = html['user_list'][0]['user_info']['short_id']
+			if unique_id != user_id:
+				print('用户ID可能输入错误或无法搜索到此用户ID')
+				sys.exit()
+		share_user_url = 'https://www.amemv.com/share/user/%s' % uid
 		share_user = requests.get(share_user_url, headers=self.headers)
 		_dytk_re = re.compile(r"dytk:\s*'(.+)'")
 		dytk = _dytk_re.search(share_user.text).group(1)
-		_nickname_re = re.compile(r'<p class="nickname">(.+?)<\/p>')
-		nickname = _nickname_re.search(share_user.text).group(1)
 		print('JS签名下载中')
 		urllib.request.urlretrieve('https://raw.githubusercontent.com/Jack-Cherish/python-spider/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
 		try:
-			process = Popen(['node', 'fuck-byted-acrawler.js', str(user_id)], stdout=PIPE, stderr=PIPE)
+			process = Popen(['node', 'fuck-byted-acrawler.js', str(uid)], stdout=PIPE, stderr=PIPE)
 		except (OSError, IOError) as err:
 			print('请先安装 node.js: https://nodejs.org/')
 			sys.exit()
 		sign = process.communicate()[0].decode().strip('\n').strip('\r')
 		print('解析视频链接中')
 		while has_more != 0:
-			user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (user_id, max_cursor, sign, dytk)
+			user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (uid, max_cursor, sign, dytk)
 			req = requests.get(user_url, headers=self.headers)
 			while req.status_code != 200:
 				req = requests.get(user_url, headers=self.headers)
@@ -132,7 +220,7 @@ class DouYin(object):
 			None
 		"""
 		self.hello()
-		user_id = input('请输入UID(例如60388937600):')
+		user_id = input('请输入ID(例如792279162或Empty_1996):')
 		watermark_flag = int(input('是否下载带水印的视频(0-否,1-是):'))
 		video_names, video_urls, share_urls, nickname = self.get_video_urls(user_id)
 		if nickname not in os.listdir():
