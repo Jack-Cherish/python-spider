@@ -9,7 +9,7 @@ import sys
 import types
 
 """
-类说明:下载《笔趣看》网小说: url:http://www.biqukan.com/
+类说明:下载《笔趣看》网小说: url:https://www.biqukan.com/
 
 Parameters:
 	target - 《笔趣看》网指定的小说目录地址(string)
@@ -58,7 +58,7 @@ class download(object):
 				if child.string == u"%s" % flag_name:
 					begin_flag = True
 				if begin_flag == True and child.a != None:
-					download_url = "http://www.biqukan.com" + child.a.get('href')
+					download_url = "https://www.biqukan.com" + child.a.get('href')
 					download_name = child.string
 					names = str(download_name).split('章')
 					name = charter.findall(names[0] + '章')
