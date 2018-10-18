@@ -58,7 +58,7 @@ class DouYin(object):
 			data = json.load(f)
 			return data
 
-	def get_video_urls(self, user_id):
+	def get_video_urls(self, user_id, type_flag='f'):
 		"""
 		获得视频播放地址
 		Parameters:
@@ -143,8 +143,9 @@ class DouYin(object):
 			sys.exit()
 		sign = process.communicate()[0].decode().strip('\n').strip('\r')
 		print('解析视频链接中')
+		user_url_prefix = 'https://www.amemv.com/aweme/v1/aweme/favorite' if type_flag == 'f' else 'https://www.amemv.com/aweme/v1/aweme/post'
 		while has_more != 0:
-			user_url = 'https://www.amemv.com/aweme/v1/aweme/post/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (uid, max_cursor, sign, dytk)
+			user_url = user_url_prefix + '/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (uid, max_cursor, sign, dytk)
 			req = requests.get(user_url, headers=self.headers)
 			while req.status_code != 200:
 				req = requests.get(user_url, headers=self.headers)
@@ -220,9 +221,10 @@ class DouYin(object):
 			None
 		"""
 		self.hello()
-		user_id = input('请输入ID(例如792279162或Empty_1996):')
-		watermark_flag = int(input('是否下载带水印的视频(0-否,1-是):'))
-		video_names, video_urls, share_urls, nickname = self.get_video_urls(user_id)
+		user_id = input('请输入ID(例如792279162或Empty_1996或95006183):')
+		watermark_flag = bool(int(input('是否下载带水印的视频(0-否,1-是):')))
+		type_flag = input('p-上传的, f-喜欢的:')
+		video_names, video_urls, share_urls, nickname = self.get_video_urls(user_id, type_flag)
 		if nickname not in os.listdir():
 			os.mkdir(nickname)
 		print('视频下载中:共有%d个作品!\n' % len(video_urls))
