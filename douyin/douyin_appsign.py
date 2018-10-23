@@ -232,7 +232,7 @@ class DouYin(object):
 		type_flag = input('f-收藏的-默认, p-上传的:')
 		type_flag = type_flag if type_flag!='' else 'f'
 
-		save_dir = input('保存路径 ( 栗如"E:/Download/", 默认"./Download/"):')
+		save_dir = input('保存路径 ( 例如"E:/Download/", 默认"./Download/"):')
 		save_dir = save_dir if save_dir else "./Download/"
 
 		video_names, video_urls, share_urls, nickname = self.get_video_urls(user_id, type_flag)
