@@ -166,10 +166,15 @@ class DouYin(object):
 						req = requests.get(user_url_prefix, params=params, headers=headers)
 					html = json.loads(req.text)
 			for each in html['aweme_list']:
-				if type_flag == 'f':
-					share_desc = each['share_info']['share_desc']
-				else:
-					share_desc = each['desc']
+				try:
+					if type_flag == 'f':
+						video_url = each['video']['play_addr']['url_list'][0]
+						share_desc = each['share_info']['share_desc']
+					else:
+						video_url = each['video']['bit_rate'][0]['play_addr']['url_list'][2]
+						share_desc = each['desc']
+				except:
+					continue
 				if os.name == 'nt':
 					for c in r'\/:*?"<>|':
 						nickname = nickname.replace(c, '').strip().strip('\.')
@@ -180,13 +185,6 @@ class DouYin(object):
 				else:
 					video_names.append(share_id + '-' + share_desc + '.mp4')
 				share_urls.append(each['share_info']['share_url'])
-				try:
-					if type_flag == 'f':
-						video_url = each['video']['play_addr']['url_list'][0]
-					else:
-						video_url = each['video']['bit_rate'][0]['play_addr']['url_list'][2]
-				except:
-					video_url = ''
 				video_urls.append(video_url)
 			max_cursor = html['max_cursor']
 			has_more = html['has_more']
