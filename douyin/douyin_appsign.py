@@ -36,6 +36,12 @@ class DouYin(object):
 
 	def getSign(self, token, query):
 		req = requests.post('https://api.appsign.vip:2688/sign', json={'token': token, 'query': query}).json()
+		try:
+			while req['message']:
+				print('伺服器错误: %s 重试中' % req['message'])
+				req = requests.post('https://api.appsign.vip:2688/sign', json={'token': token, 'query': query}).json()
+		except:
+			pass
 		if req['success']:
 			sign = req['data']
 		else:
