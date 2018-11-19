@@ -127,20 +127,23 @@ class DouYin(object):
 		headers = {
 			'User-Agent': 'Aweme/2.7.0 (iPhone; iOS 11.0; Scale/2.00)'
 		}
-		req = requests.get('https://api.amemv.com/aweme/v1/general/search/', params=params, headers=headers)
-		html = json.loads(req.text)
-		uid = html['user_list'][0]['user_info']['uid']
-		nickname = html['user_list'][0]['user_info']['nickname']
-		unique_id = html['user_list'][0]['user_info']['unique_id']
-		if unique_id != user_id:
-			unique_id = html['user_list'][0]['user_info']['short_id']
-			if unique_id != user_id:
-				print('用户ID可能输入错误或无法搜索到此用户ID')
-				sys.exit()
+		#req = requests.get('https://api.amemv.com/aweme/v1/general/search/', params=params, headers=headers)
+		#html = json.loads(req.text)
+		#uid = html['user_list'][0]['user_info']['uid']
+		#nickname = html['user_list'][0]['user_info']['nickname']
+		#unique_id = html['user_list'][0]['user_info']['unique_id']
+		#if unique_id != user_id:
+		#	unique_id = html['user_list'][0]['user_info']['short_id']
+		#	if unique_id != user_id:
+		#		print('用户ID可能输入错误或无法搜索到此用户ID')
+		#		sys.exit()
+		uid = user_id
 		share_user_url = 'https://www.amemv.com/share/user/%s' % uid
 		share_user = requests.get(share_user_url, headers=self.headers)
 		_dytk_re = re.compile(r"dytk:\s*'(.+)'")
 		dytk = _dytk_re.search(share_user.text).group(1)
+		_nickname_re = re.compile(r'<p class="nickname">(.+?)<\/p>')
+		nickname = _nickname_re.search(share_user.text).group(1)
 		urllib.request.urlretrieve('https://raw.githubusercontent.com/Jack-Cherish/python-spider/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
 		try:
 			process = Popen(['node', 'fuck-byted-acrawler.js', str(uid)], stdout=PIPE, stderr=PIPE)
@@ -250,6 +253,7 @@ class DouYin(object):
 			None
 		"""
 		self.hello()
+		print('搜索api需要登录，暂时使用UID下载\n分享用户页面，用浏览器打开短链接，原始链接中/share/user/后的数字即是UID')
 		user_id = input('请输入ID (例如95006183):')
 		user_id = user_id if user_id else '95006183'
 		watermark_flag = input('是否下载带水印的视频 (0-否(默认), 1-是):')
