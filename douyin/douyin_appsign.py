@@ -27,12 +27,11 @@ class DouYin(object):
 
 	def getToken(self):
 		req = requests.get('https://api.appsign.vip:2688/token/douyin/version/2.7.0').json()
-		return self.save_json(req)
+		return self.save_json('douyin_token.txt', req)
 
 	def getDevice(self):
 		req = requests.get('https://api.appsign.vip:2688/douyin/device/new/version/2.7.0').json()
-		device_info = req['data']
-		return device_info
+		return self.save_json('douyin_device.txt', req)
 
 	def getSign(self, token, query):
 		req = requests.post('https://api.appsign.vip:2688/sign', json={'token': token, 'query': query}).json()
@@ -48,6 +47,28 @@ class DouYin(object):
 			sign = req['success']
 		return sign
 
+	def getParams(self, device_info, APPINFO):
+		params = {
+			'iid': device_info['iid'],
+			'idfa': device_info['idfa'],
+			'vid': device_info['vid'],
+			'device_id': device_info['device_id'],
+			'openudid': device_info['openudid'],
+			'device_type': device_info['device_type'],
+			'os_version': device_info['os_version'],
+			'os_api': device_info['os_api'],
+			'screen_width': device_info['screen_width'],
+			'device_platform': device_info['device_platform'],
+			'version_code': APPINFO['version_code'],
+			'channel': APPINFO['channel'],
+			'app_name': APPINFO['app_name'],
+			'build_number': APPINFO['build_number'],
+			'app_version': APPINFO['app_version'],
+			'aid': APPINFO['aid'],
+			'ac': 'WIFI'
+		}
+		return params
+
 	def params2str(self, params):
 		query = ''
 		for k, v in params.items():
@@ -55,12 +76,12 @@ class DouYin(object):
 		query = query.strip('&')
 		return query
 
-	def save_json(self, data):
-		with open('douyin.txt', 'w') as f:
+	def save_json(self, filename, data):
+		with open(filename, 'w') as f:
 			json.dump(data, f, ensure_ascii=False)
 
-	def load_json(self):
-		with open('douyin.txt', 'r') as f:
+	def load_json(self, filename):
+		with open(filename, 'r') as f:
 			data = json.load(f)
 			return data
 
@@ -80,7 +101,22 @@ class DouYin(object):
 		unique_id = ''
 		max_cursor = 0
 		has_more = 1
-		device_info = self.getDevice()
+		if not os.path.isfile('douyin_device.txt'):
+			self.getDevice()
+		if not os.path.isfile('douyin_token.txt'):
+			self.getToken()
+		try:
+			while self.load_json('douyin_device.txt')['message']:
+				print('伺服器错误: %s 重试中' % self.load_json('douyin_device.txt')['message'])
+				self.getDevice()
+		except:
+			pass
+		try:
+			while self.load_json('douyin_token.txt')['message']:
+				print('伺服器错误: %s 重试中' % self.load_json('douyin_token.txt')['message'])
+				self.getToken()
+		except:
+			pass
 		APPINFO = {
 			'version_code': '2.7.0',
 			'app_version': '2.7.0',
@@ -89,37 +125,18 @@ class DouYin(object):
 			'build_number': '27014',
 			'aid': '1128'
 		}
-		params = {
-			'iid': device_info['iid'],
-			'idfa': device_info['idfa'],
-			'vid': device_info['vid'],
-			'device_id': device_info['device_id'],
-			'openudid': device_info['openudid'],
-			'device_type': device_info['device_type'],
-			'os_version': device_info['os_version'],
-			'os_api': device_info['os_api'],
-			'screen_width': device_info['screen_width'],
-			'device_platform': device_info['device_platform'],
-			'version_code': APPINFO['version_code'],
-			'channel': APPINFO['channel'],
-			'app_name': APPINFO['app_name'],
-			'build_number': APPINFO['build_number'],
-			'app_version': APPINFO['app_version'],
-			'aid': APPINFO['aid'],
-			'ac': 'WIFI',
-			'count': '12',
-			'keyword': user_id,
-			'offset': '0'
-		}
 		print('解析视频链接中')
+		device_info = self.load_json('douyin_device.txt')['data']
+		params = self.getParams(device_info, APPINFO)
+		params['count'] = '12'
+		params['keyword'] = user_id
+		params['offset'] = '0'
 		query = self.params2str(params)
-		if not os.path.isfile('douyin.txt'):
-			self.getToken()
-		token = self.load_json()['token']
+		token = self.load_json('douyin_token.txt')['token']
 		sign = self.getSign(token, query)
 		while not sign:
 			self.getToken()
-			token = self.load_json()['token']
+			token = self.load_json('douyin_token.txt')['token']
 			sign = self.getSign(token, query)
 		params['mas'] = sign['mas']
 		params['as'] = sign['as']
