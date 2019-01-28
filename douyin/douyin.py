@@ -56,7 +56,7 @@ class DouYin(object):
 		except (OSError, IOError) as err:
 			print('请先安装 node.js: https://nodejs.org/')
 			sys.exit()
-		user_url_prefix = 'https://www.amemv.com/aweme/v1/aweme/favorite' if type_flag == 'f' else 'https://www.douyin.com/aweme/v1/aweme/post'
+		user_url_prefix = 'https://www.douyin.com/aweme/v1/aweme/favorite' if type_flag == 'f' else 'https://www.douyin.com/aweme/v1/aweme/post'
 		print('解析视频链接中')
 		while has_more != 0:
 			process = Popen(['node', 'fuck-byted-acrawler.js', str(user_id)], stdout=PIPE, stderr=PIPE)
