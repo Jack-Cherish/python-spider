@@ -41,8 +41,7 @@ class DouYin(object):
 		max_cursor = 0
 		has_more = 1
 		i = 0
-		x = 0
-		share_user_url = 'https://www.amemv.com/share/user/%s' % user_id
+		share_user_url = 'https://www.douyin.com/share/user/%s' % user_id
 		share_user = requests.get(share_user_url, headers=self.headers)
 		while share_user.status_code != 200:
 			share_user = requests.get(share_user_url, headers=self.headers)
@@ -69,15 +68,10 @@ class DouYin(object):
 			try:
 				while html['aweme_list'] == []:
 					i = i + 1
-					x = x + 1
 					sys.stdout.write('已重新链接' + str(i) + '次 (若超过100次，请ctrl+c强制停止再重来)' + '\r')
 					sys.stdout.flush()
 					process = Popen(['node', 'fuck-byted-acrawler.js', str(user_id)], stdout=PIPE, stderr=PIPE)
 					_sign = process.communicate()[0].decode().strip('\n').strip('\r')
-					if x > 2:
-						x = 0
-						process = Popen(['node', 'fuck-byted-acrawler.js', str(user_id)], stdout=PIPE, stderr=PIPE)
-						_sign = process.communicate()[0].decode().strip('\n').strip('\r')
 					user_url = user_url_prefix + '/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (user_id, max_cursor, _sign, dytk)
 					req = requests.get(user_url, headers=self.headers)
 					while req.status_code != 200:
@@ -86,7 +80,6 @@ class DouYin(object):
 			except:
 				pass
 			i = 0
-			x = 0
 			for each in html['aweme_list']:
 				try:
 					url = 'https://aweme.snssdk.com/aweme/v1/play/?video_id=%s&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0'
