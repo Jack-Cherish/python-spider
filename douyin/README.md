@@ -12,6 +12,4 @@
 
 ## 使用说明
 
-	python douyin_appsign.py
-
-感谢 [AppSign](https://github.com/AppSign/douyin) 提供免费加签服务
+	python douyin.py
