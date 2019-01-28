@@ -49,7 +49,7 @@ class DouYin(object):
 		dytk = _dytk_re.search(share_user.text).group(1)
 		_nickname_re = re.compile(r'<p class="nickname">(.+?)<\/p>')
 		nickname = _nickname_re.search(share_user.text).group(1)
-		#urllib.request.urlretrieve('https://raw.githubusercontent.com/Jack-Cherish/python-spider/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
+		urllib.request.urlretrieve('https://raw.githubusercontent.com/Jack-Cherish/python-spider/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
 		try:
 			Popen(['node', '-v'], stdout=PIPE, stderr=PIPE).communicate()
 		except (OSError, IOError) as err:
