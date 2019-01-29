@@ -12,6 +12,6 @@
 
 ## 使用说明
 
-	python douyin_appsign.py
+	python douyin.py
 
-感谢 [AppSign](https://github.com/AppSign/douyin) 提供免费加签服务
+关于重新链接次数: 用户视频通常重新链接30次以内会成功，而收藏视频目前链接成功机率极低，当然有耐心也能等他成功为止。。
