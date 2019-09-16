@@ -2,9 +2,9 @@
 
 * 贵有恒，何必三更起五更睡；最无益，只怕一日暴十寒。
 * Python3爬虫实战：实战源码+博客讲解
-* [个人网站](http://cuijiahua.com "悬停显示")
-* [CSDN博客](http://blog.csdn.net/c406495762 "悬停显示")
-* [CSDN爬虫专栏](http://blog.csdn.net/column/details/15321.html "悬停显示")<br>
+* [个人网站](http://cuijiahua.com "个人网站")
+* [CSDN博客](http://blog.csdn.net/c406495762 "CSDN博客")
+* [CSDN爬虫专栏](https://blog.csdn.net/c406495762/article/category/9268672 "爬虫专栏")<br>
 * 学习交流群【328127489】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e70f3fcff3761450fda9b43eadc1910dac308a962ef9e3e87941cd2c681c4bb4"><img border="0" src="https://github.com/Jack-Cherish/Pictures/blob/master/qqgroup.png" alt="Coder" title="Coder"></a><br>
 * 分享技术，乐享生活：Jack Cui公众号每周五推送“程序员欢乐送”系列资讯类文章，欢迎您的关注！
 <div align="center"><img border="0" src="https://ww2.sinaimg.cn/large/0072Lfvtly1fxuhd2t2jqj309k09kglk.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
