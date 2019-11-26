@@ -34,7 +34,7 @@
     * [抖音App视频下载_rev1](https://github.com/Jack-Cherish/python-spider/blob/master/douyin.py "悬停显示")
     * [抖音App视频下载_rev2](https://github.com/Jack-Cherish/python-spider/blob/master/douyin_pro.py "悬停显示")
     * [抖音App视频下载_rev3](https://github.com/Jack-Cherish/python-spider/tree/master/douyin "悬停显示")
-    * [GEETEST验证码破解](https://github.com/Jack-Cherish/python-spider/blob/master/geetest.py "悬停显示")
+    * [GEETEST验证码识别](https://github.com/Jack-Cherish/python-spider/blob/master/geetest.py "悬停显示")
     * [12306抢票小助手](https://github.com/Jack-Cherish/python-spider/blob/master/12306.py "悬停显示")
     * [百万英雄答题辅助系统](https://github.com/Jack-Cherish/python-spider/tree/master/baiwan "悬停显示")   
     * [网易云音乐批量下载](https://github.com/Jack-Cherish/python-spider/tree/master/Netease "悬停显示")
@@ -179,17 +179,11 @@
 	
 	![image](https://github.com/Jack-Cherish/Pictures/blob/master/14.gif)
 	
- * geetest.py:GEETEST验证码破解
- 
- 	爬虫最大的敌人之一是什么？没错，验证码！Geetest作为提供验证码服务的行家，市场占有率还是蛮高的。遇到Geetest提供的滑动验证码怎么破？授人予鱼不如授人予渔，接下来就为大家呈现本教程的精彩内容。
+ * geetest.py:GEETEST验证码识别
  
  	原理说明:
 	
-	 * 个人网站：http://www.cuijiahua.com/blog/2017/11/spider_2_geetest.html
-	 
-	动态示意图：
-	
-	![image](https://github.com/Jack-Cherish/Pictures/blob/master/spider_2_1.gif)
+	 无
 	
  * 12306.py:用Python抢火车票简单代码
  
