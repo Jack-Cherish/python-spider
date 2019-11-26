@@ -75,7 +75,7 @@ def save_full_bg(driver, full_bg_path="fbg.png", full_bg_class="geetest_canvas_f
 
 class Crack():
 	def __init__(self,keyword):
-		self.url = 'http://bj.gsxt.gov.cn/sydq/loginSydqAction!sydq.dhtml'
+		self.url = '*'
 		self.browser = webdriver.Chrome('D:\\chromedriver.exe')
 		self.wait = WebDriverWait(self.browser, 100)
 		self.keyword = keyword
