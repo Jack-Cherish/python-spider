@@ -23,7 +23,6 @@
     * [文件下载小助手](https://github.com/Jack-Cherish/python-spider/blob/master/downloader.py "悬停显示")
 * [爬虫实战](#爬虫实战)
     * [笔趣看小说下载](https://github.com/Jack-Cherish/python-spider/blob/master/biqukan.py "悬停显示")
-    * [VIP视频下载](https://github.com/Jack-Cherish/python-spider/tree/master/video_downloader "悬停显示")
     * [百度文库文章下载_rev1](https://github.com/Jack-Cherish/python-spider/blob/master/baiduwenku.py "悬停显示")
     * [百度文库文章下载_rev2](https://github.com/Jack-Cherish/python-spider/blob/master/baiduwenku_pro_1.py "悬停显示")
     * [《帅啊》网帅哥图片下载](https://github.com/Jack-Cherish/python-spider/blob/master/shuaia.py "悬停显示")
@@ -31,9 +30,7 @@
     * [《火影忍者》漫画下载](https://github.com/Jack-Cherish/python-spider/tree/master/cartoon "悬停显示")
     * [财务报表下载小助手](https://github.com/Jack-Cherish/python-spider/blob/master/financical.py "悬停显示")
     * [一小时入门网络爬虫](https://github.com/Jack-Cherish/python-spider/tree/master/one_hour_spider "悬停显示")
-    * [抖音App视频下载_rev1](https://github.com/Jack-Cherish/python-spider/blob/master/douyin.py "悬停显示")
-    * [抖音App视频下载_rev2](https://github.com/Jack-Cherish/python-spider/blob/master/douyin_pro.py "悬停显示")
-    * [抖音App视频下载_rev3](https://github.com/Jack-Cherish/python-spider/tree/master/douyin "悬停显示")
+    * [抖音App视频下载](https://github.com/Jack-Cherish/python-spider/tree/master/douyin "悬停显示")
     * [GEETEST验证码识别](https://github.com/Jack-Cherish/python-spider/blob/master/geetest.py "悬停显示")
     * [12306抢票小助手](https://github.com/Jack-Cherish/python-spider/blob/master/12306.py "悬停显示")
     * [百万英雄答题辅助系统](https://github.com/Jack-Cherish/python-spider/tree/master/baiwan "悬停显示")   
@@ -64,34 +61,6 @@
 	使用方法：
 
 		python biqukan.py
-
- * video_downloader：爱奇艺等主流视频网站的VIP视频破解助手(暂只支持PC和手机在线观看VIP视频！)
-
-	感谢Python3二维码生成器作者：https://github.com/sylnsfar/qrcode
-	
-	编译好的软件下载连接：https://pan.baidu.com/s/1bqSTNJL 密码:p8bs
-	
-	解压密码：`cuijiahua.com`
-	
-	无需Python3环境，在Windows下，解压即用！[软件使用方法](http://blog.csdn.net/c406495762/article/details/71334633 "悬停显示")
-	
-	源码可查看`video_downloader`，运行源码需要搭建Python3环境，并安装相应第三方依赖库：
-	
-	在`video_downloader`文件夹下，安装第三方依赖库：
-
-		pip3 install -r requirements.txt
-
-	使用方法：
-	
-		python movie_downloader.py
-
-	运行环境：
-	
-		Windows, Python3
-		
-		Linux, Python3
-		
-		Mac, Python3
 
  * baiduwenku.py: 百度文库word文章爬取
 	
