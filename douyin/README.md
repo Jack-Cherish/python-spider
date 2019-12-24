@@ -14,4 +14,6 @@
 
 	python douyin.py
 
-关于重新链接次数: 用户视频通常重新链接30次以内会成功，而收藏视频目前链接成功机率极低，当然有耐心也能等他成功为止。。
+签名服务来源：https://github.com/coder-fly/douyin-signature<br />
+也可以使用 pyppeteer 模拟浏览器来取得签名，如此就不必依赖服务<br />
+要是以后服务器关了再来弄吧。 。
