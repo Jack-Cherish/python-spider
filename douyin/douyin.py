@@ -1,8 +1,6 @@
 # -*- coding:utf-8 -*-
 from contextlib import closing
-import requests, json, re, os, sys, random
-from ipaddress import ip_address
-from subprocess import Popen, PIPE
+import requests, json, re, os, sys
 import urllib
 
 class DouYin(object):
@@ -10,19 +8,16 @@ class DouYin(object):
 		"""
 		抖音App视频下载
 		"""
-		rip = ip_address('0.0.0.0')
-		while rip.is_private:
-			rip = ip_address('.'.join(map(str, (random.randint(0, 255) for _ in range(4)))))
 		self.headers = {
-			'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+			'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+			'sec-fetch-mode': 'cors',
+			'sec-fetch-site': 'same-origin',
+			'accept': 'application/json',
 			'accept-encoding': 'gzip, deflate, br',
 			'accept-language': 'zh-CN,zh;q=0.9',
-			'pragma': 'no-cache',
-			'cache-control': 'no-cache',
-			'upgrade-insecure-requests': '1',
-			'user-agent': 'Mozilla/5.0 (Linux; U; Android 5.1.1; zh-cn; MI 4S Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.1.3',
-			'X-Real-IP': str(rip),
-			'X-Forwarded-For': str(rip),
+		}
+		self.headers1 = {
+			'User-Agent': 'Mozilla/5.0 (Linux; U; Android 5.1.1; zh-cn; MI 4S Build/LMY47V) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.146 Mobile Safari/537.36 XiaoMi/MiuiBrowser/9.1.3',
 		}
 
 	def get_video_urls(self, user_id, type_flag='f'):
@@ -40,54 +35,41 @@ class DouYin(object):
 		share_urls = []
 		max_cursor = 0
 		has_more = 1
-		i = 0
+		sign_api = 'http://49.233.200.77:5001'
 		share_user_url = 'https://www.douyin.com/share/user/%s' % user_id
 		share_user = requests.get(share_user_url, headers=self.headers)
 		while share_user.status_code != 200:
 			share_user = requests.get(share_user_url, headers=self.headers)
+		_tac_re = re.compile(r"tac='([\s\S]*?)'</script>")
+		tac = _tac_re.search(share_user.text).group(1)
 		_dytk_re = re.compile(r"dytk\s*:\s*'(.+)'")
 		dytk = _dytk_re.search(share_user.text).group(1)
 		_nickname_re = re.compile(r'<p class="nickname">(.+?)<\/p>')
 		nickname = _nickname_re.search(share_user.text).group(1)
-		urllib.request.urlretrieve('https://raw.githubusercontent.com/Jack-Cherish/python-spider/master/douyin/fuck-byted-acrawler.js', 'fuck-byted-acrawler.js')
-		try:
-			Popen(['node', '-v'], stdout=PIPE, stderr=PIPE).communicate()
-		except (OSError, IOError) as err:
-			print('请先安装 node.js: https://nodejs.org/')
-			sys.exit()
+		data = {
+			'tac': tac.split('|')[0],
+			'user_id': user_id,
+		}
+		req = requests.post(sign_api, data=data)
+		while req.status_code != 200:
+			req = requests.post(sign_api, data=data)
+		sign = req.json().get('signature')
 		user_url_prefix = 'https://www.douyin.com/aweme/v1/aweme/favorite' if type_flag == 'f' else 'https://www.douyin.com/aweme/v1/aweme/post'
 		print('解析视频链接中')
 		while has_more != 0:
-			process = Popen(['node', 'fuck-byted-acrawler.js', str(user_id)], stdout=PIPE, stderr=PIPE)
-			_sign = process.communicate()[0].decode().strip('\n').strip('\r')
 			user_url = user_url_prefix + '/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (user_id, max_cursor, _sign, dytk)
 			req = requests.get(user_url, headers=self.headers)
 			while req.status_code != 200:
 				req = requests.get(user_url, headers=self.headers)
 			html = json.loads(req.text)
-			try:
-				while html['aweme_list'] == []:
-					i = i + 1
-					sys.stdout.write('已重新链接' + str(i) + '次 (若超过100次，请ctrl+c强制停止再重来)' + '\r')
-					sys.stdout.flush()
-					process = Popen(['node', 'fuck-byted-acrawler.js', str(user_id)], stdout=PIPE, stderr=PIPE)
-					_sign = process.communicate()[0].decode().strip('\n').strip('\r')
-					user_url = user_url_prefix + '/?user_id=%s&max_cursor=%s&count=21&aid=1128&_signature=%s&dytk=%s' % (user_id, max_cursor, _sign, dytk)
-					req = requests.get(user_url, headers=self.headers)
-					while req.status_code != 200:
-						req = requests.get(user_url, headers=self.headers)
-					html = json.loads(req.text)
-			except:
-				pass
-			i = 0
 			for each in html['aweme_list']:
 				try:
-					url = 'https://aweme.snssdk.com/aweme/v1/play/?video_id=%s&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0'
-					uri = each['video']['play_addr']['uri']
-					video_url = url % uri
+					url = 'https://aweme.snssdk.com/aweme/v1/play/?video_id=%s&line=0&ratio=720p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH'
+					vid = each['video']['vid']
+					video_url = url % vid
 				except:
 					continue
-				share_desc = each['share_info']['share_desc']
+				share_desc = each['desc']
 				if os.name == 'nt':
 					for c in r'\/:*?"<>|':
 						nickname = nickname.replace(c, '').strip().strip('\.')
@@ -97,7 +79,8 @@ class DouYin(object):
 					video_names.append(share_id + '.mp4')
 				else:
 					video_names.append(share_id + '-' + share_desc + '.mp4')
-				share_urls.append(each['share_info']['share_url'])
+				share_url = 'https://www.douyin.com/share/video/%s' % share_id
+				share_urls.append(share_url)
 				video_urls.append(video_url)
 			max_cursor = html['max_cursor']
 			has_more = html['has_more']
@@ -133,7 +116,7 @@ class DouYin(object):
 		"""
 		size = 0
 		video_url = self.get_download_url(video_url, watermark_flag=watermark_flag)
-		with closing(requests.get(video_url, headers=self.headers, stream=True)) as response:
+		with closing(requests.get(video_url, headers=self.headers1, stream=True)) as response:
 			chunk_size = 1024
 			content_size = int(response.headers['content-length'])
 			if response.status_code == 200:
@@ -157,9 +140,9 @@ class DouYin(object):
 			None
 		"""
 		self.hello()
-		print('搜索api需要登录，暂时使用UID下载\n分享用户页面，用浏览器打开短链接，原始链接中/share/user/后的数字即是UID')
-		user_id = input('请输入ID (例如95006183):')
-		user_id = user_id if user_id else '95006183'
+		print('UID取得方式：\n分享用户页面，用浏览器打开短链接，原始链接中/share/user/后的数字即是UID')
+		user_id = input('请输入UID (例如60388937600):')
+		user_id = user_id if user_id else '60388937600'
 		watermark_flag = input('是否下载带水印的视频 (0-否(默认), 1-是):')
 		watermark_flag = watermark_flag if watermark_flag!='' else '0'
 		watermark_flag = bool(int(watermark_flag))
