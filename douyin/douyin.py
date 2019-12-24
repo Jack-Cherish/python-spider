@@ -36,7 +36,7 @@ class DouYin(object):
 		max_cursor = 0
 		has_more = 1
 		sign_api = 'http://49.233.200.77:5001'
-		share_user_url = 'https://www.douyin.com/share/user/%s' % user_id
+		share_user_url = 'https://www.iesdouyin.com/share/user/%s' % user_id
 		share_user = requests.get(share_user_url, headers=self.headers)
 		while share_user.status_code != 200:
 			share_user = requests.get(share_user_url, headers=self.headers)
@@ -54,7 +54,7 @@ class DouYin(object):
 		while req.status_code != 200:
 			req = requests.post(sign_api, data=data)
 		sign = req.json().get('signature')
-		user_url_prefix = 'https://www.douyin.com/web/api/v2/aweme/like' if type_flag == 'f' else 'https://www.douyin.com/web/api/v2/aweme/post'
+		user_url_prefix = 'https://www.iesdouyin.com/web/api/v2/aweme/like' if type_flag == 'f' else 'https://www.iesdouyin.com/web/api/v2/aweme/post'
 		print('解析视频链接中')
 		while has_more != 0:
 			user_url = user_url_prefix + '/?user_id=%s&sec_uid=&count=21&max_cursor=%s&aid=1128&_signature=%s&dytk=%s' % (user_id, max_cursor, sign, dytk)
@@ -79,7 +79,7 @@ class DouYin(object):
 					video_names.append(share_id + '.mp4')
 				else:
 					video_names.append(share_id + '-' + share_desc + '.mp4')
-				share_url = 'https://www.douyin.com/share/video/%s' % share_id
+				share_url = 'https://www.iesdouyin.com/share/video/%s' % share_id
 				share_urls.append(share_url)
 				video_urls.append(video_url)
 			max_cursor = html['max_cursor']
@@ -146,8 +146,8 @@ class DouYin(object):
 		watermark_flag = input('是否下载带水印的视频 (0-否(默认), 1-是):')
 		watermark_flag = watermark_flag if watermark_flag!='' else '0'
 		watermark_flag = bool(int(watermark_flag))
-		type_flag = input('收藏的目前无法下载 f-收藏的, p-上传的(默认):')
-		type_flag = type_flag if type_flag!='' else 'p'
+		type_flag = input('f-收藏的(默认), p-上传的:')
+		type_flag = type_flag if type_flag!='' else 'f'
 		save_dir = input('保存路径 (例如"E:/Download/", 默认"./Download/"):')
 		save_dir = save_dir if save_dir else "./Download/"
 		video_names, video_urls, share_urls, nickname = self.get_video_urls(user_id, type_flag)
