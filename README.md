@@ -1,6 +1,6 @@
 # Python Spider
 
-* 贵有恒，何必三更起五更睡；最无益，只怕一日暴十寒。
+* 贵有恒，何必三更起五更睡；最无益，只怕一日曝十日寒。
 * Python3爬虫实战：实战源码+博客讲解
 * [个人网站](http://cuijiahua.com "个人网站")
 * [CSDN博客](http://blog.csdn.net/c406495762 "CSDN博客")
