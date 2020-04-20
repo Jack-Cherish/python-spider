@@ -1,3 +1,5 @@
+# 注：2020年最新连载教程请移步：[Python Spider 2020](https://github.com/Jack-Cherish/python-spider/tree/master/2020 "Python Spider 2020")
+
 # Python Spider
 
 * 贵有恒，何必三更起五更睡；最无益，只怕一日曝十日寒。
