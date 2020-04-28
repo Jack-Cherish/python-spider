@@ -39,9 +39,9 @@ for i, url in enumerate(tqdm(chapter_urls)):
         'Referer': url
     }
     name = chapter_names[i]
-    # 去掉...
-    if '...' in name:
-        name = name.replace('...', '')
+    # 去掉.
+    while '.' in name:
+        name = name.replace('.', '')
     chapter_save_dir = os.path.join(save_dir, name)
     if name not in os.listdir(save_dir):
         os.mkdir(chapter_save_dir)
