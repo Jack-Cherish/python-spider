@@ -3,6 +3,13 @@ import time
 from tqdm import tqdm
 from bs4 import BeautifulSoup
 
+"""
+    Author:
+        Jack Cui
+    Wechat:
+        https://mp.weixin.qq.com/s/OCWwRVDFNslIuKyiCVUoTA
+"""
+
 def get_content(target):
     req = requests.get(url = target)
     req.encoding = 'utf-8'
