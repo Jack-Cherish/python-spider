@@ -15,7 +15,7 @@
 * [个人网站](http://cuijiahua.com "个人网站")
 
 ## Python3 网络爬虫教程 2020
-|   文章   |  公众号  |    个人网站    |    知乎    |    CSDN    |    代码    |
-| :------  | :--------: | :--------: | :--------: | :--------: | :--------: |
-| Python3 网络爬虫（一）：初识网络爬虫之夜探老王家 | [公众号](https://mp.weixin.qq.com/s/1rcq9RQYuAuHFg1w1j8HXg "Python3 网络爬虫（一）") | [个人网站](https://cuijiahua.com/blog/2020/04/spider-6.html "Python3 网络爬虫（一）") | no | no | no |
-| Python3 网络爬虫（二）：下载小说的正确姿势 | [公众号](https://mp.weixin.qq.com/s/5e2_r0QXUISVp9GdDsqbzg "Python3 网络爬虫（二）") | [个人网站](https://cuijiahua.com/blog/2020/04/spider-7.html "Python3 网络爬虫（二）") | no | no | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/xbqg "Python3 网络爬虫（二）") |
+|   文章   |  公众号  |    代码    |
+| :------  | :--------: | :--------: |
+| Python3 网络爬虫（一）：初识网络爬虫之夜探老王家 | [公众号](https://mp.weixin.qq.com/s/1rcq9RQYuAuHFg1w1j8HXg "Python3 网络爬虫（一）") | no |
+| Python3 网络爬虫（二）：下载小说的正确姿势 | [公众号](https://mp.weixin.qq.com/s/5e2_r0QXUISVp9GdDsqbzg "Python3 网络爬虫（二）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/xbqg "Python3 网络爬虫（二）") |
