@@ -12,7 +12,7 @@
 
 * 学习交流群：关注公众号，回复交流群，拉你进群！<br>
 
-<div align="center"><img border="0" src="images/gzh-1.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
+<div align="center"><img border="0" src="https://cuijiahua.com/wp-content/uploads/2019/04/gzh-1.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
 
 * [个人网站](http://cuijiahua.com "个人网站")
 
