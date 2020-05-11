@@ -10,6 +10,8 @@
 
 * 公众号：[JackCui-AI](https://mp.weixin.qq.com/s/OCWwRVDFNslIuKyiCVUoTA "JackCui-AI")<br>
 
+* 学习交流群：关注公众号，回复交流群，拉你进群！<br>
+
 <div align="center"><img border="0" src="images/gzh-1.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
 
 * [个人网站](http://cuijiahua.com "个人网站")
