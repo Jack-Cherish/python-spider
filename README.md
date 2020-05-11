@@ -2,15 +2,14 @@
 
 # Python Spider
 
-* 贵有恒，何必三更起五更睡；最无益，只怕一日曝十日寒。
-* Python3爬虫实战：实战源码+博客讲解
-* [个人网站](http://cuijiahua.com "个人网站")
-* [CSDN博客](http://blog.csdn.net/c406495762 "CSDN博客")
-* [CSDN爬虫专栏](https://blog.csdn.net/c406495762/article/category/9268672 "爬虫专栏")<br>
-* 学习交流群【328127489】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=e70f3fcff3761450fda9b43eadc1910dac308a962ef9e3e87941cd2c681c4bb4"><img border="0" src="https://github.com/Jack-Cherish/Pictures/blob/master/qqgroup.png" alt="Coder" title="Coder"></a><br>
+* 贵有恒，何必三更起五更睡；最无益，只怕一日曝十日寒。<br>
+* Python3爬虫实战：实战源码+博客讲解<br>
+* 学习交流群：关注公众号，回复交流群，拉你进群！<br>
 * 公众号：[JackCui-AI](https://mp.weixin.qq.com/s/OCWwRVDFNslIuKyiCVUoTA "JackCui-AI")<br>
-* 分享技术，乐享生活：Jack Cui公众号推送“程序员欢乐送”系列资讯类文章，以及技术类文章，欢迎您的关注！
-<div align="center"><img border="0" src="https://ww2.sinaimg.cn/large/0072Lfvtly1fxuhd2t2jqj309k09kglk.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
+* 分享技术，乐享生活：Jack Cui公众号推送技术类文章，涉及深度学习、网络爬虫，欢迎您的关注！
+<div align="center"><img border="0" src="https://cuijiahua.com/wp-content/uploads/2019/04/gzh-1.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
+* [个人网站](http://cuijiahua.com "个人网站")<br>
+* [CSDN博客](http://blog.csdn.net/c406495762 "CSDN博客")<br>
 
 ## 声明
 
