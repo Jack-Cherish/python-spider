@@ -8,7 +8,7 @@
 * [CSDN博客](http://blog.csdn.net/c406495762 "CSDN博客")
 * 学习交流群：关注公众号，回复交流群，拉你进群！<br>
 * 公众号：[JackCui-AI](https://mp.weixin.qq.com/s/OCWwRVDFNslIuKyiCVUoTA "JackCui-AI")<br>
-* 分享技术，乐享生活：Jack Cui公众号推送技术类文章，涉及深度学习、网络爬虫，欢迎您的关注！
+* 分享技术，乐享生活：Jack Cui公众号推送技术类文章，涉及深度学习、网络爬虫、Python基础等，欢迎您的关注！
 <div align="center"><img border="0" src="https://cuijiahua.com/wp-content/uploads/2019/04/gzh-1.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
 
 
