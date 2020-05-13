@@ -2,23 +2,19 @@
 
 # Python Spider
 
-* 贵有恒，何必三更起五更睡；最无益，只怕一日曝十日寒。<br>
-* Python3爬虫实战：实战源码+博客讲解<br>
-* [个人网站](http://cuijiahua.com "个人网站")
-* [CSDN博客](http://blog.csdn.net/c406495762 "CSDN博客")
-* 学习交流群：关注公众号，回复交流群，拉你进群！<br>
-* 公众号：[JackCui-AI](https://mp.weixin.qq.com/s/OCWwRVDFNslIuKyiCVUoTA "JackCui-AI")<br>
-* 分享技术，乐享生活：Jack Cui公众号推送技术类文章，涉及深度学习、网络爬虫、Python基础等，欢迎您的关注！
-<div align="center"><img border="0" src="https://cuijiahua.com/wp-content/uploads/2019/04/gzh-1.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
+原创文章每周最少两篇，**后续最新文章**会在[【公众号】](#公众号)首发，大家可以加我[【微信】](#微信)进**交流群**，技术交流或提意见都可以，欢迎**Star**！
 
+<p align="center">
+  <a href="#微信" target="_blank"><img src="https://img.shields.io/badge/weChat-微信群-blue.svg" alt="微信群"></a>
+  <a href="#公众号" target="_blank"><img src="https://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-Jack%20Cui-lightgrey.svg" alt="公众号"></a>
+  <a href="https://blog.csdn.net/c406495762" target="_blank"><img src="https://img.shields.io/badge/csdn-CSDN-red.svg" alt="投稿"></a>
+  <a href="https://www.zhihu.com/people/Jack--Cui" target="_blank"><img src="https://img.shields.io/badge/zhihu-知乎-informational" alt="投稿"></a>
+  <a href="https://juejin.im/user/5ea2ca74e51d4546b50d5f9f" target="_blank"><img src="https://img.shields.io/badge/juejin-掘金-blue.svg" alt="投稿"></a>
+</p>
 
 ## 声明
 
 * 代码、教程**仅限于学习交流，请勿用于任何商业用途！**
-
-### 文章首发声明
-
-* 文章在自己的个人网站首发，其他平台文章均属转发，如想获得最新更新进展，欢迎关注我的个人网站：http://cuijiahua.com/
 
 ## 目录
 
@@ -250,3 +246,9 @@
 ## 其它
 
  * 欢迎 Pull requests，感谢贡献。
+ 
+ 更多精彩，敬请期待！
+
+<a name="微信"></a>  <a name="公众号"></a>
+
+![公众号](https://cuijiahua.com/wp-content/uploads/2020/05/gzh-w.jpg)
