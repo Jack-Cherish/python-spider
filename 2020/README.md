@@ -6,15 +6,17 @@
 
 为了提供各位更好的学习示例，我决定重写这一系列教程，对一些失效的示例，重新找例子，并查缺补漏，完善这一些列教程。
 
-2020年，最新版的 Python3 网络爬虫实战系列教程，我会首发在公众号和个人网站上。
+2020年，最新版的 Python3 网络爬虫实战系列教程。
 
-* 公众号：[JackCui-AI](https://mp.weixin.qq.com/s/OCWwRVDFNslIuKyiCVUoTA "JackCui-AI")<br>
+原创文章每周最少两篇，**后续最新文章**会在[【公众号】](#公众号)首发，大家可以加我[【微信】](#微信)进**交流群**，技术交流或提意见都可以，欢迎**Star**！
 
-* 学习交流群：关注公众号，回复交流群，拉你进群！<br>
-
-<div align="center"><img border="0" src="https://cuijiahua.com/wp-content/uploads/2019/04/gzh-1.jpg" alt="Coder" title="gongzhonghao" with="200" height="200"></div>
-
-* [个人网站](http://cuijiahua.com "个人网站")
+<p align="center">
+  <a href="#微信" target="_blank"><img src="https://img.shields.io/badge/weChat-微信群-blue.svg" alt="微信群"></a>
+  <a href="#公众号" target="_blank"><img src="https://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-Jack%20Cui-lightgrey.svg" alt="公众号"></a>
+  <a href="https://blog.csdn.net/c406495762" target="_blank"><img src="https://img.shields.io/badge/csdn-CSDN-red.svg" alt="投稿"></a>
+  <a href="https://www.zhihu.com/people/Jack--Cui" target="_blank"><img src="https://img.shields.io/badge/zhihu-知乎-informational" alt="投稿"></a>
+  <a href="https://juejin.im/user/5ea2ca74e51d4546b50d5f9f" target="_blank"><img src="https://img.shields.io/badge/juejin-掘金-blue.svg" alt="投稿"></a>
+</p>
 
 ## Python3 网络爬虫教程 2020
 |   文章   |  公众号  |    代码    |
@@ -23,3 +25,9 @@
 | Python3 网络爬虫（二）：下载小说的正确姿势 | [公众号](https://mp.weixin.qq.com/s/5e2_r0QXUISVp9GdDsqbzg "Python3 网络爬虫（二）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/xbqg "Python3 网络爬虫（二）") |
 | Python3 网络爬虫（三）：漫画下载，动态加载、反爬虫这都不叫事！| [公众号](https://mp.weixin.qq.com/s/wyS-OP04K3Vs9arSelRlyA "Python3网络爬虫（三）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/dmzj "Python3 网络爬虫（三）") |
 | Python3 网络爬虫（四）：视频下载，那些事儿！| [公众号](https://mp.weixin.qq.com/s/_geNA6Dwo4kx25X7trJzlg "Python3 网络爬虫（四）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/zycjw "Python3 网络爬虫（四）") |
+
+更多精彩，敬请期待！
+
+<a name="微信"></a>  <a name="公众号"></a>
+
+![公众号](https://cuijiahua.com/wp-content/uploads/2020/05/gzh-w.jpg)
