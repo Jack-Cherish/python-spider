@@ -25,6 +25,7 @@
 | Python3 网络爬虫（二）：下载小说的正确姿势 | [公众号](https://mp.weixin.qq.com/s/5e2_r0QXUISVp9GdDsqbzg "Python3 网络爬虫（二）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/xbqg "Python3 网络爬虫（二）") |
 | Python3 网络爬虫（三）：漫画下载，动态加载、反爬虫这都不叫事！| [公众号](https://mp.weixin.qq.com/s/wyS-OP04K3Vs9arSelRlyA "Python3网络爬虫（三）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/dmzj "Python3 网络爬虫（三）") |
 | Python3 网络爬虫（四）：视频下载，那些事儿！| [公众号](https://mp.weixin.qq.com/s/_geNA6Dwo4kx25X7trJzlg "Python3 网络爬虫（四）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/zycjw "Python3 网络爬虫（四）") |
+| Python3 网络爬虫（五）：老板，需要特殊服务吗？| [公众号](https://mp.weixin.qq.com/s/PPTSnIHV71b-wB3oRiYnIA "Python3 网络爬虫（五）") | [Code](https://github.com/Jack-Cherish/python-spider/tree/master/2020/api "Python3 网络爬虫（五）") |
 
 更多精彩，敬请期待！
 
