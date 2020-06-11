@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 class taobao():
     def __init__(self):
-        self.browser = webdriver.Chrome("D://chromedriver.exe")
+        self.browser = webdriver.Chrome("path\to\your\chromedriver.exe")
         # 最大化窗口
         self.browser.maximize_window()
         self.browser.implicitly_wait(5)
