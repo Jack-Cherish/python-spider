@@ -32,4 +32,4 @@
 
 <a name="微信"></a>  <a name="公众号"></a>
 
-![公众号](https://cuijiahua.com/wp-content/uploads/2020/05/gzh-w.jpg)
+![公众号](https://github.com/Jack-Cherish/Pictures/blob/master/gzh-w.jpg)
