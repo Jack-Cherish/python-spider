@@ -251,4 +251,4 @@
 
 <a name="微信"></a>  <a name="公众号"></a>
 
-![公众号](https://github.com/Jack-Cherish/Pictures/blob/master/gzh-w.jpg)
+<img src="https://ftp.bmp.ovh/imgs/2020/07/112254f0199e3d4f.jpg" alt="wechat" width="400" height="200" align="bottom" />
