@@ -7,9 +7,9 @@
 <p align="center">
   <a href="#微信" target="_blank"><img src="https://img.shields.io/badge/weChat-微信群-blue.svg" alt="微信群"></a>
   <a href="#公众号" target="_blank"><img src="https://img.shields.io/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-Jack%20Cui-lightgrey.svg" alt="公众号"></a>
-  <a href="https://space.bilibili.com/331507846"><img src="https://img.shields.io/badge/bilibili-哔哩哔哩-critical" alt="B站"></a>	
-  <a href="https://blog.csdn.net/c406495762" target="_blank"><img src="https://img.shields.io/badge/csdn-CSDN-red.svg" alt="CSDN"></a>
+  <a href="https://space.bilibili.com/331507846"><img src="https://img.shields.io/badge/bilibili-哔哩哔哩-critical" alt="B站"></a>
   <a href="https://www.zhihu.com/people/Jack--Cui" target="_blank"><img src="https://img.shields.io/badge/zhihu-知乎-informational" alt="知乎"></a>
+  <a href="https://blog.csdn.net/c406495762" target="_blank"><img src="https://img.shields.io/badge/csdn-CSDN-red.svg" alt="CSDN"></a>
   <a href="https://juejin.im/user/5ea2ca74e51d4546b50d5f9f" target="_blank"><img src="https://img.shields.io/badge/juejin-掘金-blue.svg" alt="掘金"></a>
 </p>
 
