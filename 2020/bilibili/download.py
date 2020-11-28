@@ -46,10 +46,11 @@ def get_download_url(url):
     r = requests.post(
         'https://xbeibeix.com/api/bilibili/',
         headers={'content-type': 'application/x-www-form-urlencoded'},
-        data={'bilibiliurl11082': url, 'zengqiang': 'true'})
-    plain_text = re.search("hahaha = '(.*?)';", r.text).group(1)
-    cypher_text = get_js_function('bilibili.js', 'decrypt', plain_text)
-    return cypher_text
+        data={'bilibiliurl11082': url, 'zengqiang': 'true'}
+    )
+    hahaha = re.search("hahaha = '(.*?)';", r.text).group(1)
+    download_url = get_js_function('bilibili.js', 'decrypt', hahaha)
+    return download_url
 
 space_url = 'https://space.bilibili.com/280793434'
 search_url = 'https://api.bilibili.com/x/space/arc/search'
