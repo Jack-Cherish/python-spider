@@ -42,9 +42,9 @@ def get_proxys(page = 1):
 	#存储代理的列表
 	proxys_list = []
 	#爬取每个代理信息
-	for index in range(len(ip_list_info)):
+	for index, element in enumerate(ip_list_info):
 		if index % 2 == 1 and index != 1:
-			dom = etree.HTML(str(ip_list_info[index]))
+			dom = etree.HTML(str(element))
 			ip = dom.xpath('//td[2]')
 			port = dom.xpath('//td[3]')
 			protocol = dom.xpath('//td[6]')
