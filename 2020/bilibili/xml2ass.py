@@ -2,7 +2,7 @@
 # This file is released under General Public License version 3.
 # You should have received a copy of General Public License text alongside with
 # this program. If not, you can obtain it at http://gnu.org/copyleft/gpl.html .
-# This program comes with no warranty, the author will not be resopnsible for
+# This program comes with no warranty, the author will not be responsible for
 # any damage or problems caused by this program.
 
 import argparse
