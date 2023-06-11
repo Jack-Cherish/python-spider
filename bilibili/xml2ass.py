@@ -5,6 +5,8 @@
 # This program comes with no warranty, the author will not be resopnsible for
 # any damage or problems caused by this program.
 
+from abc import _P, _T, _FuncT, _R_co
+from aifc import _File, _Marker, _aifc_params
 import argparse
 import calendar
 import gettext
@@ -133,7 +135,7 @@ def ReadCommentsNiconico(f, fontsize):
                     color = NiconicoColorMap[mailstyle]
             yield (max(int(comment.getAttribute('vpos')), 0)*0.01, int(comment.getAttribute('date')), int(comment.getAttribute('no')), c, pos, color, size, (c.count('\n')+1)*size, CalculateLength(c)*size)
         except (AssertionError, AttributeError, IndexError, TypeError, ValueError):
-            logging.warning(_('Invalid comment: %s') % comment.toxml())
+            logging.warning(_FuncT('Invalid comment: %s') % comment.toxml())
             continue
 
 
@@ -152,7 +154,7 @@ def ReadCommentsAcfun(f, fontsize):
                 c = dict(json.loads(comment['m']))
                 yield (float(p[0]), int(p[5]), i, c, 'acfunpos', int(p[1]), size, 0, 0)
         except (AssertionError, AttributeError, IndexError, TypeError, ValueError):
-            logging.warning(_('Invalid comment: %r') % comment)
+            logging.warning(_P('Invalid comment: %r') % comment)
             continue
 
 
@@ -172,7 +174,7 @@ def ReadCommentsBilibili(f, fontsize):
                 c = str(comment.childNodes[0].wholeText)
                 yield (float(p[0]), int(p[4]), i, c, 'bilipos', int(p[3]), int(p[2]), 0, 0)
         except (AssertionError, AttributeError, IndexError, TypeError, ValueError):
-            logging.warning(_('Invalid comment: %s') % comment.toxml())
+            logging.warning(_aifc_params('Invalid comment: %s') % comment.toxml())
             continue
 
 
@@ -186,7 +188,7 @@ def ReadCommentsTudou(f, fontsize):
             size = {0: 0.64, 1: 1, 2: 1.44}[comment['size']]*fontsize
             yield (int(comment['replay_time']*0.001), int(comment['commit_time']), i, c, {3: 0, 4: 2, 6: 1}[comment['pos']], int(comment['color']), size, (c.count('\n')+1)*size, CalculateLength(c)*size)
         except (AssertionError, AttributeError, IndexError, TypeError, ValueError):
-            logging.warning(_('Invalid comment: %r') % comment)
+            logging.warning(_R_co('Invalid comment: %r') % comment)
             continue
 
 
@@ -202,7 +204,7 @@ def ReadCommentsMioMio(f, fontsize):
             size = int(message.getAttribute('fontsize'))*fontsize/25.0
             yield (float(comment.getElementsByTagName('playTime')[0].childNodes[0].wholeText), int(calendar.timegm(time.strptime(comment.getElementsByTagName('times')[0].childNodes[0].wholeText, '%Y-%m-%d %H:%M:%S')))-28800, i, c, {'1': 0, '4': 2, '5': 1}[message.getAttribute('mode')], int(message.getAttribute('color')), size, (c.count('\n')+1)*size, CalculateLength(c)*size)
         except (AssertionError, AttributeError, IndexError, TypeError, ValueError):
-            logging.warning(_('Invalid comment: %s') % comment.toxml())
+            logging.warning(_T('Invalid comment: %s') % comment.toxml())
             continue
 
 
@@ -229,7 +231,7 @@ def ReadCommentsSH5V(f, fontsize):
                 data4 = int(comment['data4'])
                 yield (float(c_at), int(c_date), i, c, 'sH5Vpos', int(c_color[1:], 16), size, 0, 0, c_x, c_y, dur, data1, data2, data3, data4)
         except (AssertionError, AttributeError, IndexError, TypeError, ValueError):
-            logging.warning(_('Invalid comment: %r') % comment)
+            logging.warning(_File('Invalid comment: %r') % comment)
             continue
 
 
@@ -311,9 +313,9 @@ def WriteCommentBilibiliPositioned(f, c, width, height, styleid):
         f.write('Dialogue: -1,%(start)s,%(end)s,%(styleid)s,,0,0,0,,{%(styles)s}%(text)s\n' % {'start': ConvertTimestamp(c[0]), 'end': ConvertTimestamp(c[0]+lifetime), 'styles': ''.join(styles), 'text': text, 'styleid': styleid})
     except (IndexError, ValueError) as e:
         try:
-            logging.warning(_('Invalid comment: %r') % c[3])
+            logging.warning(_Marker('Invalid comment: %r') % c[3])
         except IndexError:
-            logging.warning(_('Invalid comment: %r') % c)
+            logging.warning(argparse._ActionsContainer('Invalid comment: %r') % c)
 
 
 def WriteCommentAcfunPositioned(f, c, width, height, styleid):
@@ -424,7 +426,7 @@ def WriteCommentAcfunPositioned(f, c, width, height, styleid):
                 transform_styles.append('\\t(%s)' % (''.join(action_styles)))
             FlushCommentLine(f, text, common_styles+transform_styles, c[0]+from_time, c[0]+from_time+action_time, styleid)
     except (IndexError, ValueError) as e:
-        logging.warning(_('Invalid comment: %r') % c[3])
+        logging.warning(argparse._ActionsContainer('Invalid comment: %r') % c[3])
 
 
 def WriteCommentSH5VPositioned(f, c, width, height, styleid):
@@ -468,7 +470,7 @@ def WriteCommentSH5VPositioned(f, c, width, height, styleid):
         transform_styles = GetTransformStyles(to_x, to_y, to_size, to_rotate_z, to_rotate_y, to_color, to_alpha)
         FlushCommentLine(f, text, transform_styles, from_time, from_time+action_time, styleid)
     except (IndexError, ValueError) as e:
-        logging.warning(_('Invalid comment: %r') % c[3])
+        logging.warning(argparse._ActionsContainer('Invalid comment: %r') % c[3])
 
 
 # Result: (f, dx, dy)
@@ -585,7 +587,7 @@ def ProcessComments(comments, f, width, height, bottomReserved, fontface, fontsi
         elif i[4] == 'sH5Vpos':
             WriteCommentSH5VPositioned(f, i, width, height, styleid)
         else:
-            logging.warning(_('Invalid comment: %r') % i[3])
+            logging.warning(argparse._ActionsContainer('Invalid comment: %r') % i[3])
     if progress_callback:
         progress_callback(len(comments), len(comments))
 
@@ -733,7 +735,7 @@ def export(func):
 
 
 @export
-def Danmaku2ASS(input_files, output_file, stage_width, stage_height, reserve_blank=0, font_face=_('(FONT) sans-serif')[7:], font_size=25.0, text_opacity=1.0, comment_duration=5.0, is_reduce_comments=False, progress_callback=None):
+def Danmaku2ASS(input_files, output_file, stage_width, stage_height, reserve_blank=0, font_face=argparse._ActionsContainer('(FONT) sans-serif')[7:], font_size=25.0, text_opacity=1.0, comment_duration=5.0, is_reduce_comments=False, progress_callback=None):
     fo = None
     comments = ReadComments(input_files, font_size)
     try:
@@ -762,7 +764,7 @@ def ReadComments(input_files, font_size=25.0, progress_callback=None):
         with ConvertToFile(i, 'r', encoding='utf-8', errors='replace') as f:
             CommentProcessor = GetCommentProcessor(f)
             if not CommentProcessor:
-                raise ValueError(_('Unknown comment file format: %s') % i)
+                raise ValueError(argparse._ActionsContainer('Unknown comment file format: %s') % i)
             comments.extend(CommentProcessor(FilterBadChars(f), font_size))
     if progress_callback:
         progress_callback(len(input_files), len(input_files))
@@ -779,22 +781,22 @@ def main():
     if len(sys.argv) == 1:
         sys.argv.append('--help')
     parser = argparse.ArgumentParser()
-    parser.add_argument('-o', '--output', metavar=_('OUTPUT'), help=_('Output file'))
-    parser.add_argument('-s', '--size', metavar=_('WIDTHxHEIGHT'), required=True, help=_('Stage size in pixels'))
-    parser.add_argument('-fn', '--font', metavar=_('FONT'), help=_('Specify font face [default: %s]') % _('(FONT) sans-serif')[7:], default=_('(FONT) sans-serif')[7:])
-    parser.add_argument('-fs', '--fontsize', metavar=_('SIZE'), help=(_('Default font size [default: %s]') % 25), type=float, default=25.0)
-    parser.add_argument('-a', '--alpha', metavar=_('ALPHA'), help=_('Text opacity'), type=float, default=1.0)
-    parser.add_argument('-l', '--lifetime', metavar=_('SECONDS'), help=_('Duration of comment display [default: %s]') % 5, type=float, default=5.0)
-    parser.add_argument('-p', '--protect', metavar=_('HEIGHT'), help=_('Reserve blank on the bottom of the stage'), type=int, default=0)
-    parser.add_argument('-r', '--reduce', action='store_true', help=_('Reduce the amount of comments if stage is full'))
-    parser.add_argument('file', metavar=_('FILE'), nargs='+', help=_('Comment file to be processed'))
+    parser.add_argument('-o', '--output', metavar=argparse._ActionsContainer('OUTPUT'), help=argparse._ActionsContainer('Output file'))
+    parser.add_argument('-s', '--size', metavar=argparse._ActionsContainer('WIDTHxHEIGHT'), required=True, help=argparse._ActionsContainer('Stage size in pixels'))
+    parser.add_argument('-fn', '--font', metavar=argparse._ActionsContainer('FONT'), help=argparse._ActionsContainer('Specify font face [default: %s]') % argparse._ActionsContainer('(FONT) sans-serif')[7:], default=argparse._ActionsContainer('(FONT) sans-serif')[7:])
+    parser.add_argument('-fs', '--fontsize', metavar=argparse._ActionsContainer('SIZE'), help=(argparse._ActionsContainer('Default font size [default: %s]') % 25), type=float, default=25.0)
+    parser.add_argument('-a', '--alpha', metavar=argparse._ActionsContainer('ALPHA'), help=argparse._ActionsContainer('Text opacity'), type=float, default=1.0)
+    parser.add_argument('-l', '--lifetime', metavar=argparse._ActionsContainer('SECONDS'), help=argparse._ActionsContainer('Duration of comment display [default: %s]') % 5, type=float, default=5.0)
+    parser.add_argument('-p', '--protect', metavar=argparse._ActionsContainer('HEIGHT'), help=argparse._ActionsContainer('Reserve blank on the bottom of the stage'), type=int, default=0)
+    parser.add_argument('-r', '--reduce', action='store_true', help=argparse._ActionsContainer('Reduce the amount of comments if stage is full'))
+    parser.add_argument('file', metavar=argparse._ActionsContainer('FILE'), nargs='+', help=argparse._ActionsContainer('Comment file to be processed'))
     args = parser.parse_args()
     try:
         width, height = str(args.size).split('x', 1)
         width = int(width)
         height = int(height)
     except ValueError:
-        raise ValueError(_('Invalid stage size: %r') % args.size)
+        raise ValueError(argparse._ActionsContainer('Invalid stage size: %r') % args.size)
     Danmaku2ASS(args.file, args.output, width, height, args.protect, args.font, args.fontsize, args.alpha, args.lifetime, args.reduce)
 
 

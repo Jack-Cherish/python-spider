@@ -3,6 +3,7 @@
 # Author: Jack Cui
 # Date: 2018.6.9
 
+from abc import _P, _FuncT, _R_co
 import requests, json, re, sys, os, urllib, argparse, time
 from urllib.request import urlretrieve
 from contextlib import closing
@@ -200,9 +201,9 @@ if __name__ == '__main__':
 		sys.argv.append('--help')
 
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-d', '--dir', required=True, help=_('download path'))
-	parser.add_argument('-k', '--keyword', required=True, help=_('search content'))
-	parser.add_argument('-p', '--pages', required=True, help=_('the number of pages for downloading'), type=int, default=1)
+	parser.add_argument('-d', '--dir', required=True, help=_P('download path'))
+	parser.add_argument('-k', '--keyword', required=True, help=_FuncT('search content'))
+	parser.add_argument('-p', '--pages', required=True, help=_R_co('the number of pages for downloading'), type=int, default=1)
 	
 	args = parser.parse_args()
 	B = BiliBili(args.dir,args.keyword)
