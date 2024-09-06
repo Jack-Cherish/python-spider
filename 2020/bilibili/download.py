@@ -16,6 +16,10 @@ from bs4 import BeautifulSoup
 import os
 from win32com.client import Dispatch
 
+import execjs
+import warnings
+warnings.filterwarnings("ignore")
+
 def addTasktoXunlei(down_url):
     flag = False
     o = Dispatch('ThunderAgent.Agent64.1')
@@ -28,19 +32,24 @@ def addTasktoXunlei(down_url):
         print(" AddTask is fail!")
     return flag
 
-def get_download_url(arcurl):
-    # 微信搜索 JackCui-AI 关注公众号，后台回复「B 站」获取视频解析地址
-    jiexi_url = 'xxx'
-    payload = {'url': arcurl}
-    jiexi_req = requests.get(jiexi_url, params=payload)
-    jiexi_bf = BeautifulSoup(jiexi_req.text)
-    jiexi_dn_url = jiexi_bf.iframe.get('src')
-    dn_req = requests.get(jiexi_dn_url)
-    dn_bf = BeautifulSoup(dn_req.text)
-    video_script = dn_bf.find('script',src = None)
-    DPlayer = str(video_script.string)
-    download_url = re.findall('\'(http[s]?:(?:[a-zA-Z]|[0-9]|[$-_@.&~+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)\'', DPlayer)[0]
-    download_url = download_url.replace('\\', '')
+def get_js_function(js_path, func_name, *args):
+    with open(js_path, encoding='utf-8') as fp:
+        js = fp.read()
+        ctx = execjs.compile(js)
+        return ctx.call(func_name, *args)
+
+def get_download_url(url):
+    '''
+    :param url: B站视频地址，例如https://www.bilibili.com/video/BV1ot4y1e7MA
+    :return: B站视频地址下载地址
+    '''
+    r = requests.post(
+        'https://xbeibeix.com/api/bilibili/',
+        headers={'content-type': 'application/x-www-form-urlencoded'},
+        data={'bilibiliurl11082': url, 'zengqiang': 'true'}
+    )
+    hahaha = re.search("hahaha = '(.*?)';", r.text).group(1)
+    download_url = get_js_function('bilibili.js', 'decrypt', hahaha)
     return download_url
 
 space_url = 'https://space.bilibili.com/280793434'
@@ -103,7 +112,7 @@ for video in videos_list[:10]:
                     'Accept': '*/*',
                     'Accept-Encoding': 'gzip, deflate, br',
                     'Accept-Language': 'zh-CN,zh;q=0.9'}
-    with closing(sess.get(danmu_url, headers=danmu_header, stream=True, verify=False)) as response:  
+    with closing(sess.get(danmu_url, headers=danmu_header, stream=True, verify=False)) as response:
         if response.status_code == 200:
             with open(danmu_name, 'wb') as file:
                 for data in response.iter_content():
